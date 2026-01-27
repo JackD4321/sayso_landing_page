@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lightning bolt centered on transparent background -->
+  <path
+    d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z"
+    fill="#2367EE"
+    stroke="#2367EE"
+    stroke-width="38.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

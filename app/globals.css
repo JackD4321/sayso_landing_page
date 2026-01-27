@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for Brand Colors */
+:root {
+  --color-background: #F4F4F5;
+  --color-accent-bg: #D7DEE1;
+  --color-primary: #1D4871;
+  --color-cta: #2367EE;
+  --color-accent: #FFDE59;
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-background text-primary font-sans;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

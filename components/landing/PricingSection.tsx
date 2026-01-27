@@ -142,7 +142,7 @@ export function PricingSection() {
           
           {/* Subhead */}
           <p className="text-base md:text-lg text-[#1D4871]/70 max-w-2xl mx-auto leading-relaxed">
-            Start free. Upgrade when you're ready for consistency on every call.
+            Start free. Upgrade when you&apos;re ready for consistency on every call.
           </p>
         </div>
 

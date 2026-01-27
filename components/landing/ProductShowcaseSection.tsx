@@ -94,7 +94,7 @@ function SuggestionBubble() {
   return (
     <div className="px-4 py-2.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 shadow-[0_10px_25px_rgba(0,0,0,0.25)]">
       <p className="text-[13px] leading-tight text-white/90">
-        Ask <span className="text-white font-medium">"What would make a move worth it for you in the next 6 months?"</span> to uncover the real motivation.
+        Ask <span className="text-white font-medium">&quot;What would make a move worth it for you in the next 6 months?&quot;</span> to uncover the real motivation.
       </p>
     </div>
   );
@@ -136,7 +136,7 @@ export function ProductShowcaseSection() {
             See the moment before it passes.
           </h2>
           <p className="text-base md:text-lg text-[#1D4871]/80 max-w-2xl mx-auto">
-            Sayso surfaces the next best question while you're still in the conversation.
+            Sayso surfaces the next best question while you&apos;re still in the conversation.
           </p>
         </div>
 

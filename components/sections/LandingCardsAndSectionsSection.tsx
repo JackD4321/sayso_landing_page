@@ -215,7 +215,7 @@ export function LandingCardsAndSectionsSection() {
                       style={{ backgroundColor: '#F4F4F5' }}
                     >
                       <p className="text-xs font-sans text-[#1D4871] leading-relaxed mb-3 italic">
-                        "Say the right thing at the right moment."
+                        &quot;Say the right thing at the right moment.&quot;
                       </p>
                       <div className="flex items-center gap-2">
                         <div className="text-[10px] font-sans font-bold text-[#1D4871]">

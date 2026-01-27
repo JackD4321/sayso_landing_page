@@ -154,7 +154,7 @@ export default function UIPage() {
               <strong>File:</strong> <code className="text-sm bg-[#F4F4F5] px-2 py-1 rounded">components/landing/PricingSection.tsx</code>
             </p>
             <p className="text-base text-[#1D4871]/70">
-              Pricing cards with three tiers (Free Trial, Standard, Enterprise). Includes "Most Popular" badge and feature lists.
+              Pricing cards with three tiers (Free Trial, Standard, Enterprise). Includes &quot;Most Popular&quot; badge and feature lists.
             </p>
           </div>
           <PricingSection />
@@ -266,7 +266,7 @@ export default function UIPage() {
               <strong>File:</strong> <code className="text-sm bg-[#F4F4F5] px-2 py-1 rounded">components/ui/SearchSuggestionPill.tsx</code>
             </p>
             <p className="text-base text-[#1D4871]/70">
-              Google-style search suggestion pill with blue lightning bolt icon and "sayso" text. Matches the style of Google search suggestions.
+              Google-style search suggestion pill with blue lightning bolt icon and &quot;sayso&quot; text. Matches the style of Google search suggestions.
             </p>
           </div>
           <div className="bg-[#F4F4F5] p-8 rounded-2xl flex items-center justify-center">

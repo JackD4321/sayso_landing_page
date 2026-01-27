@@ -120,7 +120,7 @@ function StepVisualPrompts() {
       {/* Suggestion bubble */}
       <div className="w-full max-w-[240px] px-3 py-2 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 shadow-[0_10px_25px_rgba(0,0,0,0.25)]">
         <p className="text-[11px] leading-tight text-white/90">
-          Ask <span className="text-white font-medium">"What would make a move worth it for you in the next 6 months?"</span>
+          Ask <span className="text-white font-medium">&quot;What would make a move worth it for you in the next 6 months?&quot;</span>
         </p>
         <p className="text-[10px] text-white/60 mt-1">
           to uncover the real motivation.

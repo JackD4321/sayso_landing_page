@@ -1,7 +1,7 @@
 'use client';
 
 // Logo placeholder data
-const logos = [
+const logos: { name: string; mark: 'circle' | 'square' }[] = [
   { name: 'Oakridge Realty', mark: 'circle' },
   { name: 'BlueStone Group', mark: 'square' },
   { name: 'Summit Homes', mark: 'circle' },

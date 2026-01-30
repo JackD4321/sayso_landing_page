@@ -1,12 +1,20 @@
 import type { Metadata } from 'next'
-import { Manrope } from 'next/font/google'
+import { Manrope, Bangers } from 'next/font/google'
 import './globals.css'
 
 // Load Manrope for hero text
-const manrope = Manrope({ 
+const manrope = Manrope({
   subsets: ['latin'],
   weight: ['700'],
   variable: '--font-manrope',
+  display: 'swap',
+})
+
+// Load Bangers for comic-book headings (v2)
+const bangers = Bangers({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-bangers',
   display: 'swap',
 })
 
@@ -26,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${manrope.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${bangers.variable}`}>
       <body>{children}</body>
     </html>
   )

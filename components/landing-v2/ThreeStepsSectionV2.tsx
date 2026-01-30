@@ -41,28 +41,30 @@ const CheckIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Comic-style curved arrow
+// Comic-style hand-drawn arrow with speed lines
 const ComicArrow = () => (
   <svg
     className="hidden md:block flex-shrink-0"
-    width="80"
-    height="40"
-    viewBox="0 0 80 40"
+    width="90"
+    height="60"
+    viewBox="0 0 90 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    {/* Main wobbly arrow shaft — hand-drawn feel */}
     <path
-      d="M5 20 C 30 5, 50 5, 75 20"
+      d="M10 30 C 20 18, 32 14, 45 18 S 62 28, 72 24"
       stroke="#1D4871"
-      strokeWidth="2.5"
+      strokeWidth="3.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       fill="none"
     />
+    {/* Bold comic arrowhead */}
     <path
-      d="M68 14 L75 20 L68 26"
+      d="M64 16 L76 24 L64 33"
       stroke="#1D4871"
-      strokeWidth="2.5"
+      strokeWidth="3.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       fill="none"
@@ -213,7 +215,7 @@ export function ThreeStepsSectionV2() {
                 tilt={step.tilt}
               />
               {index < steps.length - 1 && (
-                <div className="hidden md:flex items-center self-center -mt-12">
+                <div className="hidden md:flex items-center self-start mt-[25%]">
                   <ComicArrow />
                 </div>
               )}

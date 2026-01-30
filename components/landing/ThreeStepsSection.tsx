@@ -75,10 +75,10 @@ const CurvedArrow = () => (
 // Step 1 Visual: "Start Sayso"
 function StepVisualStartSayso() {
   return (
-    <div className="w-full h-full relative bg-gradient-to-br from-[#D7DEE1] to-white/60 rounded-3xl overflow-hidden p-3 flex items-center justify-center">
+    <div className="w-full h-full relative bg-gradient-to-br from-[#0d1b2a] to-[#1a2a3a] rounded-3xl overflow-hidden p-3 flex items-center justify-center">
       <div className="w-full max-w-[240px] flex items-center justify-between gap-2">
         {/* Dark translucent pill */}
-        <div className="flex items-center gap-1.5 px-2.5 h-8 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-[0_10px_25px_rgba(0,0,0,0.25)]">
+        <div className="flex items-center gap-1.5 px-2.5 h-8 rounded-full showcase-glass border border-white/15 shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
           <div className="p-0.5 text-white/80">
             <GridIcon />
           </div>
@@ -87,9 +87,9 @@ function StepVisualStartSayso() {
             <ToggleOnIcon />
           </div>
         </div>
-        
+
         {/* Blue CTA button */}
-        <button className="px-3 py-1.5 h-8 rounded-full bg-[#2367EE] text-white text-[11px] font-semibold whitespace-nowrap shadow-sm hover:bg-[#1F5FE0] transition-colors">
+        <button className="px-3 py-1.5 h-8 rounded-full bg-[#2367EE] text-white text-[11px] font-semibold whitespace-nowrap shadow-sm">
           Select Prospect
         </button>
       </div>
@@ -100,14 +100,14 @@ function StepVisualStartSayso() {
 // Step 2 Visual: "Get real-time prompts"
 function StepVisualPrompts() {
   return (
-    <div className="w-full h-full relative bg-gradient-to-br from-[#D7DEE1] to-white/60 rounded-3xl overflow-hidden p-3 flex flex-col items-center justify-start gap-2">
+    <div className="w-full h-full relative bg-gradient-to-br from-[#0d1b2a] to-[#1a2a3a] rounded-3xl overflow-hidden p-3 flex flex-col items-center justify-start gap-2">
       {/* Control pill with recording */}
-      <div className="w-full max-w-[240px] flex items-center gap-1.5 px-2.5 h-8 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-[0_10px_25px_rgba(0,0,0,0.25)]">
+      <div className="w-full max-w-[240px] flex items-center gap-1.5 px-2.5 h-8 rounded-full showcase-glass border border-white/15 shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
         <div className="p-0.5 text-white/80">
           <GridIcon />
         </div>
         <span className="text-[11px] text-white/80 whitespace-nowrap">Sayso started</span>
-        <div className="h-4 w-px bg-white/10" />
+        <div className="h-4 w-px bg-white/15" />
         <div className="relative p-0.5">
           <RecordIcon />
           <span className="absolute inset-0 rounded-full bg-red-500/30 animate-pulse" />
@@ -118,7 +118,7 @@ function StepVisualPrompts() {
       </div>
 
       {/* Suggestion bubble */}
-      <div className="w-full max-w-[240px] px-3 py-2 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 shadow-[0_10px_25px_rgba(0,0,0,0.25)]">
+      <div className="w-full max-w-[240px] px-3 py-2 rounded-xl showcase-glass-strong border border-white/15 shadow-[0_10px_25px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(114,126,137,0.4)]">
         <p className="text-[11px] leading-tight text-white/90">
           Ask <span className="text-white font-medium">&quot;What would make a move worth it for you in the next 6 months?&quot;</span>
         </p>

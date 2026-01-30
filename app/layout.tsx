@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   title: 'Sayso',
   description: 'Transform your landing pages',
   icons: {
-    icon: '/icon.png',
-    apple: '/apple-icon.png',
-    shortcut: '/favicon.ico',
+    icon: '/logo-youtube.png',
+    apple: '/logo-youtube.png',
+    shortcut: '/logo-youtube.png',
   },
 }
 
@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${bangers.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${bangers.variable}`} style={{ zoom: 0.8 }}>
       <body>{children}</body>
     </html>
   )

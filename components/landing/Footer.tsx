@@ -11,25 +11,7 @@ export function Footer() {
               className="flex items-center gap-2 text-[#1D4871] font-bold text-lg md:text-xl hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 -ml-2 w-fit"
               aria-label="Sayso home"
             >
-              {/* Bolt Icon SVG */}
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-[#2367EE]"
-              >
-                <path
-                  d="M11.5 1L4.5 11H10L8.5 19L15.5 9H10L11.5 1Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="font-sans">sayso</span>
+              <img src="/logo-pos-horizontal.png" alt="Sayso" className="h-8" />
             </a>
             <p className="text-sm text-[#1D4871]/70 leading-relaxed max-w-md">
               Win the Moment — real-time call guidance for outbound agents.

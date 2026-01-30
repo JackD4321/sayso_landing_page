@@ -50,10 +50,7 @@ export default function SaysoNavbarV2() {
             className="flex items-center gap-2 text-[#1D4871] font-bold text-lg md:text-xl hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 -ml-2"
             aria-label="Sayso home"
           >
-            <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#FFDE59]">
-              <path d="M11.5 1L4.5 11H10L8.5 19L15.5 9H10L11.5 1Z" fill="currentColor" stroke="#1D4871" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span className="font-comic text-xl tracking-wide">sayso</span>
+            <img src="/logo-pos-horizontal.png" alt="Sayso" className="h-8" />
           </a>
 
           {/* Desktop Nav Links */}

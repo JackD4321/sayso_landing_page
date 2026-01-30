@@ -74,25 +74,7 @@ export default function SaysoNavbar() {
             className="flex items-center gap-2 text-primary font-bold text-lg md:text-xl hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cta focus:ring-offset-2 rounded-lg px-2 -ml-2"
             aria-label="Sayso home"
           >
-            {/* Bolt Icon SVG */}
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-cta"
-            >
-              <path
-                d="M11.5 1L4.5 11H10L8.5 19L15.5 9H10L11.5 1Z"
-                fill="currentColor"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className="font-sans">sayso</span>
+            <img src="/logo-pos-horizontal.png" alt="Sayso" className="h-8" />
           </a>
 
           {/* Desktop Nav Links - Center */}

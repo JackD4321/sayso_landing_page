@@ -11,13 +11,7 @@ export function ProductShowcaseDesktop() {
       <DesktopDemoFrame
         showRecording={true}
         desktopOverlay={
-          /* Sayso Widget - positioned on desktop, top-left corner below menu bar */
-          <div
-            className="hidden md:block"
-            style={{
-              width: 'clamp(260px, 28vw, 360px)'
-            }}
-          >
+          <div className="hidden md:block w-full">
             <SaysoWidget
               currentCycle={widgetState.currentCycle}
               showBuyerMessage={widgetState.showBuyerMessage}
@@ -28,8 +22,8 @@ export function ProductShowcaseDesktop() {
           </div>
         }
       >
-        {/* CRM/Dialer content inside the browser window */}
-        <div className="relative h-full" style={{ '--callbar-h': '56px' } as React.CSSProperties}>
+        {/* Dialer content inside the browser window */}
+        <div className="relative h-full">
           <CRMDialerShowcaseV3 />
         </div>
       </DesktopDemoFrame>

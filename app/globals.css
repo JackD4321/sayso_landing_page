@@ -91,6 +91,11 @@
   50% { height: 12px; }
 }
 
+@keyframes audioBarDialer {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
 /* === V2 Comic Book Styles === */
 
 /* Halftone dot pattern overlay */

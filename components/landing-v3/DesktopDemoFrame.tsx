@@ -185,16 +185,18 @@ function RecordingIndicator({ time }: { time: string }) {
 export function DesktopDemoFrame({
   children,
   showRecording = true,
-  desktopOverlay
+  desktopOverlay,
+  fullscreen = false,
 }: {
   children: ReactNode;
   showRecording?: boolean;
   desktopOverlay?: ReactNode;
+  fullscreen?: boolean;
 }) {
   return (
-    <div className="w-full relative">
+    <div className={fullscreen ? "absolute inset-0" : "w-full relative"}>
       {/* Desktop container */}
-      <div className="relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.4)] border border-[#3a3a3c]">
+      <div className={`relative overflow-hidden ${fullscreen ? 'w-full h-full' : 'w-full aspect-[16/10] rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.4)] border border-[#3a3a3c]'}`}>
         {/* macOS Sonoma/Sequoia-style wallpaper — dark navy to teal */}
         <div className="absolute inset-0">
           {/* Base gradient */}

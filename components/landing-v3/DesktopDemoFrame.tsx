@@ -104,11 +104,11 @@ function MacOSDock() {
       <rect x="0" y="6" width="32" height="4" fill="#ff3b30"/>
       <text x="16" y="24" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#1a1a1a">1</text>
     </svg>,
-    // SaySo (highlighted)
+    // SaySo (lightning bolt logo)
     <svg key="sayso" width="28" height="28" viewBox="0 0 32 32">
       <defs><linearGradient id="sayso-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#4B8BF5"/><stop offset="100%" stopColor="#2367EE"/></linearGradient></defs>
       <rect width="32" height="32" rx="8" fill="url(#sayso-bg)"/>
-      <text x="16" y="21" textAnchor="middle" fontSize="16" fontWeight="bold" fill="white">S</text>
+      <path d="M18.4 5.6L7.2 17.6H16L13.6 26.4L24.8 14.4H16L18.4 5.6Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>,
     // Notes
     <svg key="notes" width="28" height="28" viewBox="0 0 32 32">

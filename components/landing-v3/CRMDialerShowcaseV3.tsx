@@ -387,9 +387,11 @@ function DialerHeader({ timerSeconds }: { timerSeconds: number }) {
       {/* Left: App branding */}
       <div className="flex items-center gap-3">
         <div className="w-7 h-7 rounded-lg bg-[#2367EE] flex items-center justify-center">
-          <span className="text-white text-xs font-bold">S</span>
+          <svg width="16" height="16" viewBox="0 0 512 512" fill="none">
+            <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="white" stroke="white" strokeWidth="38.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </div>
-        <span className="text-white text-sm font-semibold hidden sm:inline">SaySo Dialer</span>
+        <span className="text-white text-sm font-semibold hidden sm:inline">Dialer</span>
       </div>
 
       {/* Center: Call status */}

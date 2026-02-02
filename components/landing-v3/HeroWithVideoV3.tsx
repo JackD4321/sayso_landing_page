@@ -84,33 +84,28 @@ export function HeroWithVideoV3() {
           {/* Headline with starburst */}
           <div className="relative inline-block mb-4 md:mb-5">
             <HeroBurst />
-            <h1
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-[#1D4871] tracking-tight"
-              style={{ fontFamily: 'var(--font-bangers), cursive' }}
-            >
-              WIN THE MOMENT
+            <h1 className="font-comic text-6xl sm:text-7xl lg:text-8xl tracking-wide leading-[1.05] text-[#1D4871] relative z-10">
+              Win the Moment
             </h1>
           </div>
 
           {/* Tagline */}
-          <p className="text-lg sm:text-xl md:text-2xl text-[#1D4871]/80 max-w-2xl mx-auto mb-6 md:mb-8 font-semibold">
+          <p className="mt-2 text-base md:text-lg lg:text-xl leading-relaxed text-[#1D4871]/80 mx-auto">
             Guidance that shows up during the call—before the moment passes.
           </p>
 
           {/* CTAs with action lines */}
-          <div className="relative inline-flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="mt-4 md:mt-5 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-[42rem] mx-auto relative">
             <ActionLines />
             <a
               href="#"
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-[#2367EE] text-white text-base sm:text-lg font-bold v2-comic-border v2-comic-btn hover:bg-[#1D4871] transition-colors"
-              style={{ fontFamily: 'var(--font-bangers), cursive' }}
+              className="relative z-10 inline-flex items-center justify-center rounded-full bg-[#2367EE] px-6 py-3 text-base font-semibold text-white v2-comic-btn v2-comic-border-light border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
             >
               Book a demo
             </a>
             <a
               href="#"
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-white text-[#1D4871] text-base sm:text-lg font-bold border-2 border-[#1D4871] v2-comic-btn hover:bg-[#F4F4F5] transition-colors"
-              style={{ fontFamily: 'var(--font-bangers), cursive' }}
+              className="relative z-10 inline-flex items-center justify-center rounded-full border-2 border-[#1D4871] bg-white px-6 py-3 text-base font-semibold text-[#1D4871] v2-comic-btn focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
             >
               Learn more about Sayso
             </a>

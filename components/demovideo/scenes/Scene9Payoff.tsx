@@ -5,7 +5,7 @@ import { SafeArea } from '../Stage';
 
 export default function Scene9Payoff() {
   return (
-    <SafeArea className="flex flex-col items-center justify-center">
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
       {/* Success card */}
       <motion.div
         initial={{ opacity: 0, scale: 0.85, y: 20 }}
@@ -15,14 +15,14 @@ export default function Scene9Payoff() {
           damping: 15,
           stiffness: 200,
         }}
-        className="bg-white rounded-2xl border border-[#E4E4E7] p-8 shadow-lg max-w-sm w-full text-center"
+        className="bg-white rounded-2xl border-2 border-[#1D4871] p-8 v2-comic-shadow max-w-sm w-full text-center"
       >
         {/* Checkmark circle */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.3, type: 'spring', stiffness: 300, damping: 15 }}
-          className="w-16 h-16 rounded-full bg-[#219e66] mx-auto mb-5 flex items-center justify-center"
+          className="w-16 h-16 rounded-full bg-[#2367EE] mx-auto mb-5 flex items-center justify-center"
         >
           <motion.svg
             width="32"
@@ -51,10 +51,10 @@ export default function Scene9Payoff() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <div className="text-xs text-[#219e66] font-semibold uppercase tracking-wider mb-2">Booked</div>
-          <div className="text-xl font-bold text-slate-900 mb-1">Buyer Consultation</div>
-          <div className="text-sm text-slate-500 mb-4">Tomorrow &bull; 2:00 PM</div>
-          <div className="inline-flex items-center gap-1.5 bg-emerald-50 text-[#219e66] text-xs font-medium px-3 py-1 rounded-full border border-emerald-200">
+          <div className="text-xs text-[#2367EE] font-bold uppercase tracking-wider mb-2 font-comic">Booked</div>
+          <div className="text-xl font-bold text-[#1D4871] mb-1">Buyer Consultation</div>
+          <div className="text-sm text-[#1D4871]/70 mb-4">Tomorrow &bull; 2:00 PM</div>
+          <div className="inline-flex items-center gap-1.5 bg-[#2367EE]/10 text-[#2367EE] text-xs font-bold px-3 py-1 rounded-full border-2 border-[#2367EE]/30">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 13l4 4L19 7" />
             </svg>

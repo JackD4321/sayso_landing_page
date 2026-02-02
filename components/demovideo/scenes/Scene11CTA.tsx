@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function Scene11CTA() {
   return (
-    <SafeArea className="flex flex-col items-center justify-center">
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
       {/* Logo */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -28,7 +28,7 @@ export default function Scene11CTA() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="text-3xl md:text-4xl font-hero font-bold text-slate-900 mb-10"
+        className="text-3xl md:text-4xl font-comic text-[#1D4871] mb-10 tracking-wide"
       >
         Win the moment.
       </motion.h2>
@@ -40,19 +40,18 @@ export default function Scene11CTA() {
         transition={{ delay: 1.0, duration: 0.5 }}
         className="relative"
       >
-        {/* Glow */}
         <motion.div
           animate={{
             boxShadow: [
-              '0 0 20px 0 rgba(35, 103, 238, 0.3)',
-              '0 0 40px 8px rgba(35, 103, 238, 0.15)',
-              '0 0 20px 0 rgba(35, 103, 238, 0.3)',
+              '3px 3px 0px #1D4871',
+              '5px 5px 0px #1D4871',
+              '3px 3px 0px #1D4871',
             ],
           }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="rounded-full"
+          className="rounded-full border-2 border-[#1D4871]"
         >
-          <div className="inline-flex items-center justify-center rounded-full bg-[#2367EE] px-8 py-4 text-lg font-semibold text-white shadow-sm">
+          <div className="inline-flex items-center justify-center rounded-full bg-[#2367EE] px-8 py-4 text-lg font-bold text-white">
             Book a Demo
           </div>
         </motion.div>
@@ -63,7 +62,7 @@ export default function Scene11CTA() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.5 }}
-        className="text-slate-400 text-lg mt-8 font-sans"
+        className="text-[#1D4871]/60 text-lg mt-8 font-sans"
       >
         asksayso.com
       </motion.p>

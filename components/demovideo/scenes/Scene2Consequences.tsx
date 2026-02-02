@@ -13,12 +13,12 @@ const consequences = [
 
 export default function Scene2Consequences() {
   return (
-    <SafeArea className="flex flex-col items-center justify-center">
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
       <HighlightText
         text="Every frozen moment costs you"
         highlights={['costs']}
         highlightColor="text-[#EF4444]"
-        className="text-4xl md:text-5xl font-hero font-bold text-slate-900 text-center mb-12"
+        className="text-4xl md:text-5xl font-comic text-[#1D4871] text-center mb-12 tracking-wide"
       />
 
       <div className="grid grid-cols-2 gap-5 max-w-2xl mx-auto mt-4">
@@ -30,12 +30,14 @@ export default function Scene2Consequences() {
             transition={{
               delay: 1.0 + i * 0.4,
               duration: 0.5,
-              ease: 'easeOut',
+              type: 'spring',
+              damping: 20,
+              stiffness: 300,
             }}
-            className="flex items-center gap-4 bg-white rounded-xl border-l-4 border-[#EF4444] px-6 py-5 shadow-md"
+            className="flex items-center gap-4 bg-white rounded-2xl border-2 border-[#EF4444] px-6 py-5 v2-comic-shadow-sm"
           >
             <span className="text-2xl">{item.icon}</span>
-            <span className="text-lg font-semibold text-slate-800">{item.text}</span>
+            <span className="text-lg font-bold text-[#1D4871]">{item.text}</span>
           </motion.div>
         ))}
       </div>

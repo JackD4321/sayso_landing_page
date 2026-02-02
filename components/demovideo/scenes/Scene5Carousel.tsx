@@ -21,11 +21,11 @@ export default function Scene5Carousel() {
   }, []);
 
   return (
-    <SafeArea className="flex flex-col items-center justify-center">
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-lg text-slate-400 font-sans mb-6 tracking-wide uppercase"
+        className="text-sm text-[#1D4871]/60 font-bold mb-6 tracking-wider uppercase"
       >
         How it works
       </motion.p>
@@ -41,7 +41,7 @@ export default function Scene5Carousel() {
             className="flex items-center gap-5"
           >
             <span className="text-5xl">{phrases[index].icon}</span>
-            <span className="text-3xl md:text-4xl font-hero font-bold text-slate-900">
+            <span className="text-3xl md:text-4xl font-comic text-[#1D4871] tracking-wide">
               {phrases[index].text}
             </span>
           </motion.div>

@@ -6,12 +6,12 @@ import { HighlightText } from '../shared/HighlightText';
 
 export default function Scene1Problem() {
   return (
-    <SafeArea className="flex flex-col items-center justify-center">
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
       <div className="text-center max-w-3xl mx-auto">
         <HighlightText
           text="You're mid-call. They say something unexpected."
           highlights={[]}
-          className="text-4xl md:text-5xl font-hero font-bold text-slate-900 leading-tight"
+          className="text-4xl md:text-5xl font-comic text-[#1D4871] leading-tight tracking-wide"
         />
 
         <motion.div
@@ -24,7 +24,7 @@ export default function Scene1Problem() {
             text="And you freeze."
             highlights={['freeze.']}
             highlightColor="text-[#EF4444]"
-            className="text-5xl md:text-6xl font-hero font-bold text-slate-900 leading-tight"
+            className="text-5xl md:text-6xl font-comic text-[#1D4871] leading-tight tracking-wide"
             delay={2.0}
           />
         </motion.div>

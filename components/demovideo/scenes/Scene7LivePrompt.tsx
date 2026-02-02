@@ -18,7 +18,7 @@ export default function Scene7LivePrompt() {
   }, []);
 
   return (
-    <SafeArea className="flex items-center justify-center">
+    <SafeArea className="flex items-center justify-center v2-halftone">
       <div className="flex gap-8 w-full max-w-4xl">
         {/* Left: Call view */}
         <motion.div
@@ -75,7 +75,7 @@ export default function Scene7LivePrompt() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex-1 bg-white rounded-2xl border-2 border-[#E4E4E7] p-6 flex flex-col"
+          className="flex-1 bg-white rounded-2xl border-2 border-[#1D4871] p-6 flex flex-col v2-comic-shadow-sm"
         >
           <div className="flex items-center gap-2 mb-4">
             <div className="w-6 h-6 rounded bg-[#2367EE] flex items-center justify-center">
@@ -86,7 +86,7 @@ export default function Scene7LivePrompt() {
                 <rect x="14" y="14" width="7" height="7" rx="1" />
               </svg>
             </div>
-            <span className="text-sm font-semibold text-slate-800">Say So Coach</span>
+            <span className="text-sm font-bold text-[#1D4871]">Say So Coach</span>
           </div>
 
           {/* Signal tag */}
@@ -95,10 +95,10 @@ export default function Scene7LivePrompt() {
               initial={{ opacity: 0, scale: 0.8, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-              className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-3 py-1 mb-4 w-fit"
+              className="inline-flex items-center gap-2 bg-[#2367EE]/10 border-2 border-[#2367EE] rounded-full px-3 py-1 mb-4 w-fit"
             >
               <div className="w-2 h-2 rounded-full bg-[#2367EE]" />
-              <span className="text-xs font-medium text-[#2367EE]">Pain Point Detected</span>
+              <span className="text-xs font-bold text-[#2367EE]">Pain Point Detected</span>
             </motion.div>
           )}
 
@@ -108,13 +108,13 @@ export default function Scene7LivePrompt() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-blue-50 border border-blue-100 rounded-xl p-4 flex-1"
+              className="bg-[#FFDE59]/20 border-2 border-[#FFDE59] rounded-xl p-4 flex-1"
             >
-              <div className="text-xs text-slate-400 mb-2">Suggested response</div>
+              <div className="text-xs text-[#1D4871]/60 mb-2 font-bold uppercase tracking-wider">Suggested response</div>
               <TypewriterText
                 text="Ask: 'What would make a move worth it for you in the next 6 months?'"
                 speed={25}
-                className="text-sm font-medium text-slate-800 leading-relaxed"
+                className="text-sm font-bold text-[#1D4871] leading-relaxed"
               />
             </motion.div>
           )}

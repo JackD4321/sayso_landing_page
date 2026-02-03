@@ -44,7 +44,16 @@ export default function Scene4Reveal() {
           transition={{ delay: 0.9, duration: 0.5 }}
           className="text-xl md:text-2xl text-[#1D4871]/70 font-sans"
         >
-          Real-time guidance — <span className="text-[#2367EE] font-bold">during the call.</span>
+          Live context-based prompts — <span className="text-[#2367EE] font-bold">during the call.</span>
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.3, duration: 0.5 }}
+          className="text-lg md:text-xl text-[#1D4871]/60 font-sans mt-2"
+        >
+          Real-time guidance for every conversation.
         </motion.p>
       </div>
     </SafeArea>

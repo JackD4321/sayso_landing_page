@@ -8,7 +8,7 @@ const consequences = [
   { text: 'Lost Appointments', icon: '📅' },
   { text: 'Awkward Silences', icon: '😶' },
   { text: 'Prospects Hang Up', icon: '📵' },
-  { text: 'Missed Revenue', icon: '💸' },
+  { text: 'Lost Commission', icon: '💸' },
 ];
 
 export default function Scene2Consequences() {

@@ -236,10 +236,10 @@ function SaysoWidgetToolbar({
         className="h-[48px] flex items-center justify-between px-3"
         style={{
           borderRadius: '24px',
-          background: 'rgba(2, 25, 47, 0.9)',
+          background: 'rgba(2, 25, 47, 0.25)',
           backdropFilter: 'blur(200px)',
           WebkitBackdropFilter: 'blur(200px)',
-          boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.6)',
+          boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.12)',
         }}
       >
         <div className="flex items-center">
@@ -259,7 +259,7 @@ function SaysoWidgetToolbar({
               <span className="text-black text-sm font-medium">B</span>
             </div>
             <div
-              className="h-[30px] flex items-center gap-1.5 pl-[18px] pr-3 -ml-[20px] z-0"
+              className="h-[30px] flex items-center gap-1.5 pl-[24px] pr-3 -ml-[12px] z-0"
               style={{
                 borderTopRightRadius: '100px',
                 borderBottomRightRadius: '100px',
@@ -271,30 +271,32 @@ function SaysoWidgetToolbar({
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-1.5 flex-shrink-0">
+        <div className="flex items-center gap-3 flex-shrink-0">
           {active && (
             <>
-              <button className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4f46e5' }}>
-                <svg width="10" height="12" viewBox="0 0 12 14" fill="white">
+              <button className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4f46e5' }}>
+                <svg width="12" height="14" viewBox="0 0 12 14" fill="white">
                   <rect x="1" y="1" width="3.5" height="12" rx="1" />
                   <rect x="7.5" y="1" width="3.5" height="12" rx="1" />
                 </svg>
               </button>
-              <button className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#dc2626' }}>
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="white">
+              <button className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#dc2626' }}>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="white">
                   <rect x="1" y="1" width="10" height="10" rx="1.5" />
                 </svg>
               </button>
             </>
           )}
-          <div className="h-7 flex items-center justify-center flex-shrink-0" style={{ width: '64px', backgroundColor: active ? '#374151' : '#1f2937', borderRadius: '100px' }}>
-            <span className={`text-xs font-light ${active ? 'text-white' : 'text-white/40'}`}>{active ? timerDisplay : '0:00'}</span>
+          <div className="h-8 flex items-center justify-center flex-shrink-0" style={{ width: '90px', backgroundColor: active ? '#374151' : '#1f2937', borderRadius: '100px' }}>
+            <span className={`text-sm font-light ${active ? 'text-white' : 'text-white/40'}`}>{active ? timerDisplay : '0:00'}</span>
           </div>
           <button
-            className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+            className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
             style={{
-              background: 'rgba(2, 25, 47, 0.9)',
-              boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.6)',
+              background: 'rgba(2, 25, 47, 0.25)',
+              backdropFilter: 'blur(200px)',
+              WebkitBackdropFilter: 'blur(200px)',
+              boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.12)',
             }}
           >
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -320,10 +322,10 @@ function SaysoWidgetToolbar({
               style={{
                 padding: '12px 14px',
                 borderRadius: '16px',
-                background: 'rgba(2, 25, 47, 0.9)',
+                background: 'rgba(2, 25, 47, 0.28)',
                 backdropFilter: 'blur(200px)',
                 WebkitBackdropFilter: 'blur(200px)',
-                boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.6)',
+                boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.12)',
               }}
             >
               {prompts.map((prompt, i) => (
@@ -339,11 +341,11 @@ function SaysoWidgetToolbar({
                       borderRadius: '12px',
                       minHeight: '40px',
                       padding: '10px 14px',
-                      border: '0.5px solid rgba(255, 255, 255, 0.2)',
-                      background: i === 0 ? 'rgba(255, 255, 255, 0.11)' : 'rgba(255, 255, 255, 0.08)',
+                      border: '0.5px solid rgba(255, 255, 255, 0.08)',
+                      background: i === 0 ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.04)',
                       backdropFilter: 'blur(20px)',
                       WebkitBackdropFilter: 'blur(20px)',
-                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.08)',
+                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.03)',
                     }}
                   >
                     <p style={{ color: 'rgba(255, 255, 255, 0.92)', fontSize: '13.5px', lineHeight: '1.45', fontWeight: 400, letterSpacing: '-0.01em', margin: 0 }}>
@@ -544,7 +546,7 @@ export default function Scene6StartSession() {
       {/* Zoom wrapper */}
       <div className="absolute inset-0" style={zoomStyle}>
         <DesktopDemoFrame
-          showRecording={true}
+          showRecording={false}
           desktopOverlay={saysoOverlay}
           fullscreen={true}
         >

@@ -30,9 +30,9 @@ const scenes: Scene[] = [
   { id: 'dream', durationMs: 4000, Component: Scene3Dream },
   { id: 'reveal', durationMs: 3500, Component: Scene4Reveal },
   { id: 'carousel', durationMs: 6000, Component: Scene5Carousel },
-  { id: 'start-session', durationMs: 18000, Component: Scene6StartSession },
+  { id: 'start-session', durationMs: 11500, Component: Scene6StartSession },
   { id: 'signals', durationMs: 6000, Component: Scene8Signals },
-  { id: 'payoff', durationMs: 4000, Component: Scene9Payoff },
+  { id: 'payoff', durationMs: 4500, Component: Scene9Payoff },
   { id: 'transform', durationMs: 4000, Component: Scene10Transform },
   { id: 'cta', durationMs: 7000, Component: Scene11CTA },
 ];

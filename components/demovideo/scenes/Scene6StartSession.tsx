@@ -459,39 +459,8 @@ export default function Scene6StartSession() {
     // 10.0s: Zoom out from dialer
     timers.push(setTimeout(() => setZoomPhase('zoom-dialer-out'), 10000));
 
-    // 10.5s: Back to normal
+    // 10.5s: Back to normal — scene ends after this (no second cycle)
     timers.push(setTimeout(() => setZoomPhase('normal'), 10500));
-
-    // 11.0s: Transition to cycle 2 — reset bubbles
-    timers.push(setTimeout(() => {
-      setShowBuyerMessage(false);
-      setShowSellerMessage(false);
-      setVisiblePrompts([]);
-      setCurrentCycle(1);
-    }, 11000));
-
-    // 11.5s: Buyer starts speaking again
-    timers.push(setTimeout(() => setBuyerSpeaking(true), 11500));
-
-    // 12.0s: Buyer message appears
-    timers.push(setTimeout(() => setShowBuyerMessage(true), 12000));
-
-    // 13.5s: Buyer stops
-    timers.push(setTimeout(() => setBuyerSpeaking(false), 13500));
-
-    // 14.0s: New prompt appears
-    timers.push(setTimeout(() => {
-      setVisiblePrompts([CONVERSATION_CYCLES[1].saysoPrompt]);
-    }, 14000));
-
-    // 15.0s: Seller speaks
-    timers.push(setTimeout(() => setSellerSpeaking(true), 15000));
-
-    // 15.5s: Seller bubble
-    timers.push(setTimeout(() => setShowSellerMessage(true), 15500));
-
-    // 17.0s: Seller stops
-    timers.push(setTimeout(() => setSellerSpeaking(false), 17000));
 
     return () => timers.forEach(clearTimeout);
   }, []);

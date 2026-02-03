@@ -178,19 +178,19 @@ function SaysoPromptBubble({
           style={{
             borderRadius: '12px',
             padding: '10px 14px',
-            background: 'rgba(2, 25, 47, 0.88)',
+            background: 'rgba(2, 25, 47, 0.3)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
-            border: '0.5px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08)',
+            border: '0.5px solid rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.04)',
           }}
         >
           <p
             style={{
-              color: 'rgba(255, 255, 255, 0.92)',
+              color: 'rgba(255, 255, 255, 0.95)',
               fontSize: '12.5px',
               lineHeight: '1.45',
-              fontWeight: 400,
+              fontWeight: 500,
               letterSpacing: '-0.01em',
               margin: 0,
             }}
@@ -247,10 +247,10 @@ export function SaysoWidget({
         className="h-[48px] flex items-center justify-between px-3"
         style={{
           borderRadius: '24px',
-          background: 'rgba(2, 25, 47, 0.9)',
+          background: 'rgba(2, 25, 47, 0.25)',
           backdropFilter: 'blur(200px)',
           WebkitBackdropFilter: 'blur(200px)',
-          boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.6)',
+          boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.12)',
         }}
       >
         <div className="flex items-center">
@@ -300,10 +300,10 @@ export function SaysoWidget({
           <button
             className="w-8 h-8 rounded-full flex items-center justify-center"
             style={{
-              background: 'rgba(2, 25, 47, 0.9)',
+              background: 'rgba(2, 25, 47, 0.25)',
               backdropFilter: 'blur(200px)',
               WebkitBackdropFilter: 'blur(200px)',
-              boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.6)',
+              boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.12)',
             }}
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -321,10 +321,10 @@ export function SaysoWidget({
           style={{
             padding: '12px 14px',
             borderRadius: '16px',
-            background: 'rgba(2, 25, 47, 0.9)',
+            background: 'rgba(2, 25, 47, 0.28)',
             backdropFilter: 'blur(200px)',
             WebkitBackdropFilter: 'blur(200px)',
-            boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.6)',
+            boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.12)',
           }}
         >
           {visibleMessages.includes(0) && (
@@ -335,14 +335,14 @@ export function SaysoWidget({
                   borderRadius: '12px',
                   minHeight: '40px',
                   padding: '10px 14px',
-                  border: '0.5px solid rgba(255, 255, 255, 0.2)',
-                  background: 'rgba(255, 255, 255, 0.11)',
+                  border: '0.5px solid rgba(255, 255, 255, 0.08)',
+                  background: 'rgba(255, 255, 255, 0.05)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.08)',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.03)',
                 }}
               >
-                <p style={{ color: 'rgba(255, 255, 255, 0.92)', fontSize: '13.5px', lineHeight: '1.45', fontWeight: 400, letterSpacing: '-0.01em', margin: 0 }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '13.5px', lineHeight: '1.45', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
                   {CONVERSATION_CYCLES[currentCycle].saysoPrompt}
                 </p>
               </div>
@@ -356,14 +356,14 @@ export function SaysoWidget({
                   borderRadius: '12px',
                   minHeight: '40px',
                   padding: '10px 14px',
-                  border: '0.5px solid rgba(255, 255, 255, 0.15)',
-                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '0.5px solid rgba(255, 255, 255, 0.06)',
+                  background: 'rgba(255, 255, 255, 0.04)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.02)',
                 }}
               >
-                <p style={{ color: 'rgba(255, 255, 255, 0.92)', fontSize: '13.5px', lineHeight: '1.45', fontWeight: 400, letterSpacing: '-0.01em', margin: 0 }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '13.5px', lineHeight: '1.45', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
                   {CONVERSATION_CYCLES[(currentCycle + 1) % CONVERSATION_CYCLES.length].saysoPrompt}
                 </p>
               </div>

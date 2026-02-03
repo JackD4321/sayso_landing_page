@@ -376,8 +376,8 @@ export default function Scene6StartSession() {
 
   // Cursor + zoom animation states
   const [showCursor, setShowCursor] = useState(false);
-  const [cursorPhase, setCursorPhase] = useState<'idle' | 'moving' | 'clicking' | 'done'>('idle');
-  const [zoomPhase, setZoomPhase] = useState<'normal' | 'zooming-in' | 'zoomed' | 'zooming-out'>('normal');
+  const [cursorPhase, setCursorPhase] = useState<'idle' | 'moving-to-dock' | 'clicking-dock' | 'done'>('idle');
+  const [zoomPhase, setZoomPhase] = useState<'normal' | 'zoom-dock' | 'zoom-widget-in' | 'zoom-widget' | 'zoom-widget-out' | 'zoom-dialer-in' | 'zoom-dialer' | 'zoom-dialer-out'>('normal');
 
   // Timer ticks
   useEffect(() => {
@@ -387,95 +387,111 @@ export default function Scene6StartSession() {
     return () => clearInterval(interval);
   }, []);
 
-  // Initial state: call is already going, buyer is speaking, no SaySo yet
-  // After 1.5s, buyer stops. At 2.5s user hits "Launch SaySo". Then prompts flow in.
+  // Animation sequence:
+  // 1. Cursor moves to SaySo dock icon → clicks → widget opens
+  // 2. Conversation flows, prompt appears → quick zoom to widget → zoom out
+  // 3. Later → zoom to dialer ("Works in any dialer")
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     // 0s: Buyer is speaking with their message visible (already set via defaults)
 
-    // 1.2s: Buyer stops speaking
-    timers.push(setTimeout(() => setBuyerSpeaking(false), 1200));
-
-    // 1.5s: Cursor appears at center of screen
+    // 0.5s: Cursor appears at center
     timers.push(setTimeout(() => {
       setShowCursor(true);
       setCursorPhase('idle');
-    }, 1500));
+    }, 500));
 
-    // 1.7s: Cursor starts moving toward Launch SaySo button
-    timers.push(setTimeout(() => setCursorPhase('moving'), 1700));
+    // 0.7s: Zoom to dock area to show where we're clicking
+    timers.push(setTimeout(() => setZoomPhase('zoom-dock'), 700));
 
-    // 2.4s: Cursor arrives, click ripple
-    timers.push(setTimeout(() => setCursorPhase('clicking'), 2400));
+    // 1.0s: Cursor starts moving toward SaySo icon in dock
+    timers.push(setTimeout(() => setCursorPhase('moving-to-dock'), 1000));
 
-    // 2.6s: Activate SaySo, start zoom in
+    // 1.8s: Cursor arrives at dock, click ripple
+    timers.push(setTimeout(() => setCursorPhase('clicking-dock'), 1800));
+
+    // 2.0s: Activate SaySo widget, hide cursor
     timers.push(setTimeout(() => {
       setSaysoActive(true);
       setCursorPhase('done');
-      setZoomPhase('zooming-in');
-    }, 2600));
-
-    // 3.2s: Zoomed in — hold briefly
-    timers.push(setTimeout(() => setZoomPhase('zoomed'), 3200));
-
-    // 3.8s: Zoom back out
-    timers.push(setTimeout(() => setZoomPhase('zooming-out'), 3800));
-
-    // 4.4s: Back to normal, hide cursor
-    timers.push(setTimeout(() => {
-      setZoomPhase('normal');
       setShowCursor(false);
-    }, 4400));
+    }, 2000));
 
-    // 4.6s: First prompt appears
+    // 2.3s: Zoom out from dock
+    timers.push(setTimeout(() => setZoomPhase('normal'), 2300));
+
+    // 2.5s: Buyer stops speaking
+    timers.push(setTimeout(() => setBuyerSpeaking(false), 2500));
+
+    // 3.2s: First prompt appears
     timers.push(setTimeout(() => {
       setVisiblePrompts([CONVERSATION_CYCLES[0].saysoPrompt]);
-    }, 4600));
+    }, 3200));
 
-    // 5.8s: Seller starts speaking (using the SaySo prompt)
-    timers.push(setTimeout(() => {
-      setSellerSpeaking(true);
-    }, 5800));
+    // 3.5s: Quick zoom to widget area ("Live Prompting in action")
+    timers.push(setTimeout(() => setZoomPhase('zoom-widget-in'), 3500));
 
-    // 6.3s: Seller speech bubble appears
-    timers.push(setTimeout(() => {
-      setShowSellerMessage(true);
-    }, 6300));
+    // 4.0s: Hold zoom on widget
+    timers.push(setTimeout(() => setZoomPhase('zoom-widget'), 4000));
 
-    // 8.5s: Seller stops speaking
-    timers.push(setTimeout(() => setSellerSpeaking(false), 8500));
+    // 4.8s: Zoom back out from widget
+    timers.push(setTimeout(() => setZoomPhase('zoom-widget-out'), 4800));
 
-    // 9.5s: Transition to cycle 2 — reset bubbles
+    // 5.2s: Back to normal
+    timers.push(setTimeout(() => setZoomPhase('normal'), 5200));
+
+    // 5.5s: Seller starts speaking (using the SaySo prompt)
+    timers.push(setTimeout(() => setSellerSpeaking(true), 5500));
+
+    // 6.0s: Seller speech bubble appears
+    timers.push(setTimeout(() => setShowSellerMessage(true), 6000));
+
+    // 7.5s: Seller stops speaking
+    timers.push(setTimeout(() => setSellerSpeaking(false), 7500));
+
+    // 8.0s: Zoom to dialer ("Works in any dialer")
+    timers.push(setTimeout(() => setZoomPhase('zoom-dialer-in'), 8000));
+
+    // 8.5s: Hold zoom on dialer
+    timers.push(setTimeout(() => setZoomPhase('zoom-dialer'), 8500));
+
+    // 10.0s: Zoom out from dialer
+    timers.push(setTimeout(() => setZoomPhase('zoom-dialer-out'), 10000));
+
+    // 10.5s: Back to normal
+    timers.push(setTimeout(() => setZoomPhase('normal'), 10500));
+
+    // 11.0s: Transition to cycle 2 — reset bubbles
     timers.push(setTimeout(() => {
       setShowBuyerMessage(false);
       setShowSellerMessage(false);
       setVisiblePrompts([]);
       setCurrentCycle(1);
-    }, 9500));
+    }, 11000));
 
-    // 10.0s: Buyer starts speaking again
-    timers.push(setTimeout(() => setBuyerSpeaking(true), 10000));
+    // 11.5s: Buyer starts speaking again
+    timers.push(setTimeout(() => setBuyerSpeaking(true), 11500));
 
-    // 10.5s: Buyer message appears
-    timers.push(setTimeout(() => setShowBuyerMessage(true), 10500));
+    // 12.0s: Buyer message appears
+    timers.push(setTimeout(() => setShowBuyerMessage(true), 12000));
 
-    // 12.0s: Buyer stops
-    timers.push(setTimeout(() => setBuyerSpeaking(false), 12000));
+    // 13.5s: Buyer stops
+    timers.push(setTimeout(() => setBuyerSpeaking(false), 13500));
 
-    // 12.7s: New prompt appears
+    // 14.0s: New prompt appears
     timers.push(setTimeout(() => {
       setVisiblePrompts([CONVERSATION_CYCLES[1].saysoPrompt]);
-    }, 12700));
+    }, 14000));
 
-    // 14.0s: Seller speaks
-    timers.push(setTimeout(() => setSellerSpeaking(true), 14000));
+    // 15.0s: Seller speaks
+    timers.push(setTimeout(() => setSellerSpeaking(true), 15000));
 
-    // 14.5s: Seller bubble
-    timers.push(setTimeout(() => setShowSellerMessage(true), 14500));
+    // 15.5s: Seller bubble
+    timers.push(setTimeout(() => setShowSellerMessage(true), 15500));
 
-    // 16.5s: Seller stops
-    timers.push(setTimeout(() => setSellerSpeaking(false), 16500));
+    // 17.0s: Seller stops
+    timers.push(setTimeout(() => setSellerSpeaking(false), 17000));
 
     return () => timers.forEach(clearTimeout);
   }, []);
@@ -484,36 +500,10 @@ export default function Scene6StartSession() {
 
   const saysoOverlay = (
     <AnimatePresence>
-      {!saysoActive ? (
-        <motion.div
-          key="launch-btn"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div
-            className="flex items-center gap-3 px-5 py-3 rounded-full cursor-pointer"
-            style={{
-              background: 'rgba(2, 25, 47, 0.85)',
-              backdropFilter: 'blur(200px)',
-              WebkitBackdropFilter: 'blur(200px)',
-              boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.6), 0 8px 32px rgba(0,0,0,0.3)',
-            }}
-          >
-            <div className="w-8 h-8 rounded-lg bg-[#2367EE] flex items-center justify-center flex-shrink-0">
-              <svg width="16" height="16" viewBox="0 0 512 512" fill="none">
-                <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="white" stroke="white" strokeWidth="38.4" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span className="text-white/50 text-sm font-medium">Launch Say So</span>
-            <div className="w-2 h-2 rounded-full bg-white/20 ml-auto" />
-          </div>
-        </motion.div>
-      ) : (
+      {saysoActive && (
         <motion.div
           key="widget"
-          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -527,14 +517,25 @@ export default function Scene6StartSession() {
     </AnimatePresence>
   );
 
-  // Zoom transform based on phase — zoom toward the widget area (top-right)
+  // Zoom transform based on phase
   const zoomStyle = (() => {
     switch (zoomPhase) {
-      case 'zooming-in':
-        return { transform: 'scale(1.6) translate(-18%, 5%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
-      case 'zoomed':
-        return { transform: 'scale(1.6) translate(-18%, 5%)', transition: 'transform 0.1s ease' };
-      case 'zooming-out':
+      // Zoom to dock (bottom center) - translate Y negative moves viewport down to show dock
+      case 'zoom-dock':
+        return { transform: 'scale(1.8) translate(0%, -22%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
+      // Zoom to widget area (top-right) - gentle zoom, keep everything visible
+      case 'zoom-widget-in':
+        return { transform: 'scale(1.25) translate(-12%, 5%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
+      case 'zoom-widget':
+        return { transform: 'scale(1.25) translate(-12%, 5%)', transition: 'transform 0.1s ease' };
+      case 'zoom-widget-out':
+        return { transform: 'scale(1) translate(0%, 0%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
+      // Zoom to dialer area (center-left) - translate X positive moves viewport left to show dialer
+      case 'zoom-dialer-in':
+        return { transform: 'scale(1.35) translate(10%, -5%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
+      case 'zoom-dialer':
+        return { transform: 'scale(1.35) translate(10%, -5%)', transition: 'transform 0.1s ease' };
+      case 'zoom-dialer-out':
         return { transform: 'scale(1) translate(0%, 0%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
       default:
         return { transform: 'scale(1) translate(0%, 0%)', transition: 'transform 0.3s ease' };
@@ -604,15 +605,15 @@ export default function Scene6StartSession() {
       {showCursor && (
         <motion.div
           className="absolute z-[100] pointer-events-none"
-          initial={{ top: '55%', left: '55%' }}
+          initial={{ top: '50%', left: '50%' }}
           animate={
             cursorPhase === 'idle'
-              ? { top: '55%', left: '55%' }
-              : cursorPhase === 'moving'
-              ? { top: '38%', right: '8%', left: 'auto' }
-              : { top: '38%', right: '8%', left: 'auto' }
+              ? { top: '50%', left: '50%' }
+              : cursorPhase === 'moving-to-dock'
+              ? { top: '92%', left: '50%' }
+              : { top: '92%', left: '50%' }
           }
-          transition={{ duration: cursorPhase === 'moving' ? 0.7 : 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: cursorPhase === 'moving-to-dock' ? 0.8 : 0.1, ease: [0.25, 0.1, 0.25, 1] }}
           style={{ width: 24, height: 24 }}
         >
           {/* macOS-style cursor */}
@@ -622,7 +623,7 @@ export default function Scene6StartSession() {
 
           {/* Click ripple */}
           <AnimatePresence>
-            {cursorPhase === 'clicking' && (
+            {cursorPhase === 'clicking-dock' && (
               <motion.div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30"
                 initial={{ width: 0, height: 0, opacity: 0.8 }}

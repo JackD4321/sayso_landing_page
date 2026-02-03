@@ -1,6 +1,22 @@
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
+
+/* ─── Chevron Icon ─── */
+function ChevronIcon({ isOpen }: { isOpen: boolean }) {
+  return (
+    <svg
+      className={`w-8 h-8 text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  );
+}
 
 /* ─── Mock case study data ─── */
 const CASE_STUDIES = [
@@ -16,6 +32,7 @@ const CASE_STUDIES = [
     crm: 'Follow Up Boss',
     dialer: 'Mojo Dialer',
     customerSince: 'October 2025',
+    housesSold: '150 houses sold in 2025',
     heroQuote:
       '"Sayso turned our cold calls from guessing games into real conversations. My newer agents are booking like veterans now."',
     beforeSayso: {
@@ -57,6 +74,7 @@ const CASE_STUDIES = [
     crm: 'KVCore',
     dialer: 'KVCore built-in dialer',
     customerSince: 'November 2025',
+    housesSold: '89 houses sold in 2025',
     heroQuote:
       '"I can\'t sit on every call with every agent. Sayso is like having me whispering in their ear — except it\'s actually there when it matters."',
     beforeSayso: {
@@ -111,12 +129,17 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 /* ─── Individual Case Study Card ─── */
 function CaseStudySection({ study }: { study: (typeof CASE_STUDIES)[number] }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <section id={study.id} className="scroll-mt-24">
       <div className="bg-white border-2 border-[#1D4871] rounded-3xl v2-comic-shadow overflow-hidden">
-        {/* ─── Header ─── */}
-        <div className="bg-[#1D4871] px-6 md:px-10 py-8 md:py-10">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+        {/* ─── Header (Clickable) ─── */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full text-left bg-[#1D4871] px-6 md:px-10 py-8 md:py-10 cursor-pointer hover:bg-[#1a3f63] transition-colors"
+        >
+          <div className="flex flex-col md:flex-row items-start gap-6">
             {/* Logo */}
             <div className="bg-white rounded-2xl p-3 border-2 border-white/20 v2-comic-shadow-sm flex-shrink-0">
               <Image
@@ -131,10 +154,10 @@ function CaseStudySection({ study }: { study: (typeof CASE_STUDIES)[number] }) {
             {/* Info */}
             <div className="flex-1 min-w-0">
               <h2 className="text-2xl md:text-3xl font-comic text-white tracking-wide">
-                {study.name}
+                {study.brokerage}
               </h2>
               <p className="text-white/80 font-bold text-sm md:text-base mt-1">
-                {study.role} &bull; {study.brokerage}
+                {study.name} &bull; {study.role}
               </p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {[
@@ -146,7 +169,7 @@ function CaseStudySection({ study }: { study: (typeof CASE_STUDIES)[number] }) {
                 ].map((tag) => (
                   <span
                     key={tag}
-                    className="inline-block px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-bold border border-white/20"
+                    className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/90 text-sm md:text-base font-bold border border-white/20"
                   >
                     {tag}
                   </span>
@@ -154,124 +177,147 @@ function CaseStudySection({ study }: { study: (typeof CASE_STUDIES)[number] }) {
               </div>
             </div>
 
-            {/* Customer since */}
+            {/* Houses sold - big headline on right, aligned to top */}
             <div className="flex-shrink-0 text-right hidden md:block">
-              <p className="text-xs text-white/50 uppercase tracking-widest font-bold">Customer since</p>
-              <p className="text-white font-bold text-sm mt-1">{study.customerSince}</p>
+              <p className="text-4xl md:text-5xl lg:text-6xl font-comic text-[#FFDE59] tracking-wide leading-tight">
+                {study.housesSold}
+              </p>
+              <p className="text-sm md:text-base text-white/50 uppercase tracking-widest font-bold mt-4">Customer since</p>
+              <p className="text-white font-bold text-base md:text-lg mt-1">{study.customerSince}</p>
+            </div>
+
+            {/* Expand/Collapse Chevron */}
+            <div className="flex-shrink-0 self-center hidden md:block">
+              <ChevronIcon isOpen={isExpanded} />
             </div>
           </div>
-        </div>
 
-        {/* ─── Hero Quote ─── */}
-        <div className="px-6 md:px-10 py-8 bg-[#FFDE59]/10 border-b-2 border-[#1D4871]">
-          <blockquote className="text-xl md:text-2xl font-bold text-[#1D4871] leading-relaxed max-w-3xl">
-            {study.heroQuote}
-          </blockquote>
-        </div>
-
-        {/* ─── Key Metrics ─── */}
-        <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
-          <SectionLabel>RESULTS AT A GLANCE</SectionLabel>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-            <StatCard label="Appts/Week (After)" value={study.results.appointmentsAfter.split(' ')[0]} />
-            <StatCard label="Set Rate" value={study.results.setRateChange} />
-            <StatCard label="Time Saved/Week" value={study.results.timeSaved.replace('~', '')} />
-            <StatCard
-              label="Confidence Score"
-              value={
-                study.results.confidenceImprovement.includes('8.1')
-                  ? '8.1/10'
-                  : 'Week 1 ready'
-              }
-            />
+          {/* Mobile: Show chevron and hint */}
+          <div className="flex items-center justify-center gap-2 mt-4 md:hidden">
+            <span className="text-white/60 text-sm font-bold">
+              {isExpanded ? 'Tap to collapse' : 'Tap to expand'}
+            </span>
+            <ChevronIcon isOpen={isExpanded} />
           </div>
-        </div>
+        </button>
 
-        {/* ─── Before Sayso ─── */}
-        <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
-          <SectionLabel>BEFORE SAYSO</SectionLabel>
-          <div className="space-y-4 max-w-3xl">
-            <div>
-              <h4 className="font-bold text-[#1D4871] text-sm uppercase tracking-wide mb-1">The Problem</h4>
-              <p className="text-[#1D4871]/80 leading-relaxed">{study.beforeSayso.problem}</p>
-            </div>
-            <div>
-              <h4 className="font-bold text-[#1D4871] text-sm uppercase tracking-wide mb-1">What They Tried</h4>
-              <p className="text-[#1D4871]/80 leading-relaxed">{study.beforeSayso.triedBefore}</p>
-            </div>
-            <div>
-              <h4 className="font-bold text-[#1D4871] text-sm uppercase tracking-wide mb-1">Why It Didn&apos;t Work</h4>
-              <p className="text-[#1D4871]/80 leading-relaxed">{study.beforeSayso.whyItFailed}</p>
+        {/* ─── Collapsible Content ─── */}
+        <div
+          className={`transition-all duration-300 ease-in-out overflow-hidden ${
+            isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          {/* ─── Hero Quote ─── */}
+          <div className="px-6 md:px-10 py-8 bg-[#FFDE59]/10 border-b-2 border-[#1D4871]">
+            <blockquote className="text-xl md:text-2xl font-bold text-[#1D4871] leading-relaxed max-w-3xl">
+              {study.heroQuote}
+            </blockquote>
+          </div>
+
+          {/* ─── Key Metrics ─── */}
+          <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
+            <SectionLabel>RESULTS AT A GLANCE</SectionLabel>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+              <StatCard label="Appts/Week (After)" value={study.results.appointmentsAfter.split(' ')[0]} />
+              <StatCard label="Set Rate" value={study.results.setRateChange} />
+              <StatCard label="Time Saved/Week" value={study.results.timeSaved.replace('~', '')} />
+              <StatCard
+                label="Confidence Score"
+                value={
+                  study.results.confidenceImprovement.includes('8.1')
+                    ? '8.1/10'
+                    : 'Week 1 ready'
+                }
+              />
             </div>
           </div>
-        </div>
 
-        {/* ─── How They Use Sayso ─── */}
-        <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
-          <SectionLabel>HOW THEY USE SAYSO</SectionLabel>
-          <div className="max-w-3xl space-y-3">
-            <div className="flex flex-wrap gap-2">
-              {[study.howTheyUseSayso.leadType, study.howTheyUseSayso.callTypes].map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-block px-4 py-1.5 rounded-full bg-[#2367EE]/10 text-[#2367EE] text-xs font-bold border border-[#2367EE]/20"
-                >
-                  {tag}
-                </span>
-              ))}
+          {/* ─── Before Sayso ─── */}
+          <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
+            <SectionLabel>BEFORE SAYSO</SectionLabel>
+            <div className="space-y-4 max-w-3xl">
+              <div>
+                <h4 className="font-bold text-[#1D4871] text-sm uppercase tracking-wide mb-1">The Problem</h4>
+                <p className="text-[#1D4871]/80 leading-relaxed">{study.beforeSayso.problem}</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-[#1D4871] text-sm uppercase tracking-wide mb-1">What They Tried</h4>
+                <p className="text-[#1D4871]/80 leading-relaxed">{study.beforeSayso.triedBefore}</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-[#1D4871] text-sm uppercase tracking-wide mb-1">Why It Didn&apos;t Work</h4>
+                <p className="text-[#1D4871]/80 leading-relaxed">{study.beforeSayso.whyItFailed}</p>
+              </div>
             </div>
-            <p className="text-[#1D4871]/80 leading-relaxed">{study.howTheyUseSayso.description}</p>
           </div>
-        </div>
 
-        {/* ─── The Moment ─── */}
-        <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
-          <SectionLabel>THE MOMENT</SectionLabel>
-          <div className="max-w-3xl">
-            {/* Speech-bubble style quote */}
-            <div className="relative bg-[#F4F4F5] border-2 border-[#1D4871] rounded-2xl p-6 v2-comic-shadow-sm">
-              <p className="text-[#1D4871] leading-relaxed italic">{study.momentStory.quote}</p>
-              {/* Bubble tail */}
-              <div className="absolute -bottom-3 left-10 w-6 h-6 bg-[#F4F4F5] border-b-2 border-r-2 border-[#1D4871] rotate-45" />
+          {/* ─── How They Use Sayso ─── */}
+          <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
+            <SectionLabel>HOW THEY USE SAYSO</SectionLabel>
+            <div className="max-w-3xl space-y-3">
+              <div className="flex flex-wrap gap-2">
+                {[study.howTheyUseSayso.leadType, study.howTheyUseSayso.callTypes].map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-block px-4 py-1.5 rounded-full bg-[#2367EE]/10 text-[#2367EE] text-xs font-bold border border-[#2367EE]/20"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="text-[#1D4871]/80 leading-relaxed">{study.howTheyUseSayso.description}</p>
             </div>
-            <p className="mt-5 ml-10 font-bold text-[#1D4871] text-sm">— {study.momentStory.agent}</p>
           </div>
-        </div>
 
-        {/* ─── Detailed Results ─── */}
-        <div className="px-6 md:px-10 py-8">
-          <SectionLabel>FULL RESULTS</SectionLabel>
-          <div className="max-w-3xl">
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="border-b-2 border-[#1D4871]">
-                  <th className="py-2 text-[#1D4871] font-bold uppercase tracking-wide text-xs">Metric</th>
-                  <th className="py-2 text-[#1D4871] font-bold uppercase tracking-wide text-xs">Result</th>
-                </tr>
-              </thead>
-              <tbody className="text-[#1D4871]/80">
-                <tr className="border-b border-[#1D4871]/10">
-                  <td className="py-3 font-bold">Appointments / Week (Before)</td>
-                  <td className="py-3">{study.results.appointmentsBefore}</td>
-                </tr>
-                <tr className="border-b border-[#1D4871]/10">
-                  <td className="py-3 font-bold">Appointments / Week (After)</td>
-                  <td className="py-3">{study.results.appointmentsAfter}</td>
-                </tr>
-                <tr className="border-b border-[#1D4871]/10">
-                  <td className="py-3 font-bold">Appointment Set Rate</td>
-                  <td className="py-3">{study.results.setRateChange}</td>
-                </tr>
-                <tr className="border-b border-[#1D4871]/10">
-                  <td className="py-3 font-bold">Confidence Improvement</td>
-                  <td className="py-3">{study.results.confidenceImprovement}</td>
-                </tr>
-                <tr>
-                  <td className="py-3 font-bold">Time Saved</td>
-                  <td className="py-3">{study.results.timeSaved}</td>
-                </tr>
-              </tbody>
-            </table>
+          {/* ─── The Moment ─── */}
+          <div className="px-6 md:px-10 py-8 border-b-2 border-[#1D4871]/10">
+            <SectionLabel>THE MOMENT</SectionLabel>
+            <div className="max-w-3xl">
+              {/* Speech-bubble style quote */}
+              <div className="relative bg-[#F4F4F5] border-2 border-[#1D4871] rounded-2xl p-6 v2-comic-shadow-sm">
+                <p className="text-[#1D4871] leading-relaxed italic">{study.momentStory.quote}</p>
+                {/* Bubble tail */}
+                <div className="absolute -bottom-3 left-10 w-6 h-6 bg-[#F4F4F5] border-b-2 border-r-2 border-[#1D4871] rotate-45" />
+              </div>
+              <p className="mt-5 ml-10 font-bold text-[#1D4871] text-sm">— {study.momentStory.agent}</p>
+            </div>
+          </div>
+
+          {/* ─── Detailed Results ─── */}
+          <div className="px-6 md:px-10 py-8">
+            <SectionLabel>FULL RESULTS</SectionLabel>
+            <div className="max-w-3xl">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b-2 border-[#1D4871]">
+                    <th className="py-2 text-[#1D4871] font-bold uppercase tracking-wide text-xs">Metric</th>
+                    <th className="py-2 text-[#1D4871] font-bold uppercase tracking-wide text-xs">Result</th>
+                  </tr>
+                </thead>
+                <tbody className="text-[#1D4871]/80">
+                  <tr className="border-b border-[#1D4871]/10">
+                    <td className="py-3 font-bold">Appointments / Week (Before)</td>
+                    <td className="py-3">{study.results.appointmentsBefore}</td>
+                  </tr>
+                  <tr className="border-b border-[#1D4871]/10">
+                    <td className="py-3 font-bold">Appointments / Week (After)</td>
+                    <td className="py-3">{study.results.appointmentsAfter}</td>
+                  </tr>
+                  <tr className="border-b border-[#1D4871]/10">
+                    <td className="py-3 font-bold">Appointment Set Rate</td>
+                    <td className="py-3">{study.results.setRateChange}</td>
+                  </tr>
+                  <tr className="border-b border-[#1D4871]/10">
+                    <td className="py-3 font-bold">Confidence Improvement</td>
+                    <td className="py-3">{study.results.confidenceImprovement}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-bold">Time Saved</td>
+                    <td className="py-3">{study.results.timeSaved}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

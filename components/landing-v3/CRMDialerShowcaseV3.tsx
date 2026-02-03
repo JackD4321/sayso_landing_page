@@ -270,7 +270,7 @@ export function SaysoWidget({
               <span className="text-black text-sm font-medium">B</span>
             </div>
             <div
-              className="h-[30px] flex items-center gap-1.5 pl-[18px] pr-3 -ml-[20px] z-0"
+              className="h-[30px] flex items-center gap-1.5 pl-[24px] pr-3 -ml-[12px] z-0"
               style={{
                 borderTopRightRadius: '100px',
                 borderBottomRightRadius: '100px',

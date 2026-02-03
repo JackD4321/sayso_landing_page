@@ -184,7 +184,7 @@ function RecordingIndicator({ time }: { time: string }) {
 // Main Desktop Demo Frame
 export function DesktopDemoFrame({
   children,
-  showRecording = true,
+  showRecording = false,
   desktopOverlay,
   fullscreen = false,
 }: {
@@ -194,26 +194,35 @@ export function DesktopDemoFrame({
   fullscreen?: boolean;
 }) {
   const [showHighlight, setShowHighlight] = useState(false);
+  const [showDialerHighlight, setShowDialerHighlight] = useState(false);
 
   useEffect(() => {
-    // Animation cycle is 12 seconds
-    // Show highlight at ~4s (when first prompt appears), hide at ~10s (after both prompts shown)
-    const CYCLE_DURATION = 12000;
-    const SHOW_DELAY = 4000;
-    const HIDE_DELAY = 10000;
+    // Animation cycle is 14 seconds
+    // "Live prompting" highlight: show at 4s, hide at 8s
+    // "Works on existing dialer" highlight: show at 8s, hide at 14s (6 seconds of visibility)
+    const CYCLE_DURATION = 14000;
+    const PROMPT_SHOW_DELAY = 4000;
+    const PROMPT_HIDE_DELAY = 8000;
+    const DIALER_SHOW_DELAY = 8000;
 
     const runCycle = () => {
-      // Show highlight
-      const showTimer = setTimeout(() => {
+      // Show "Live prompting" highlight
+      const promptShowTimer = setTimeout(() => {
         setShowHighlight(true);
-      }, SHOW_DELAY);
+      }, PROMPT_SHOW_DELAY);
 
-      // Hide highlight
-      const hideTimer = setTimeout(() => {
+      // Hide "Live prompting" highlight, show "Works on existing dialer"
+      const promptHideTimer = setTimeout(() => {
         setShowHighlight(false);
-      }, HIDE_DELAY);
+        setShowDialerHighlight(true);
+      }, PROMPT_HIDE_DELAY);
 
-      return { showTimer, hideTimer };
+      // Hide "Works on existing dialer" at cycle reset
+      const dialerHideTimer = setTimeout(() => {
+        setShowDialerHighlight(false);
+      }, CYCLE_DURATION);
+
+      return { promptShowTimer, promptHideTimer, dialerHideTimer };
     };
 
     // Start first cycle
@@ -225,8 +234,9 @@ export function DesktopDemoFrame({
     }, CYCLE_DURATION);
 
     return () => {
-      clearTimeout(timers.showTimer);
-      clearTimeout(timers.hideTimer);
+      clearTimeout(timers.promptShowTimer);
+      clearTimeout(timers.promptHideTimer);
+      clearTimeout(timers.dialerHideTimer);
       clearInterval(interval);
     };
   }, []);
@@ -301,8 +311,42 @@ export function DesktopDemoFrame({
           </div>
         )}
 
-        {/* App Window — upper-left area */}
-        <div className="absolute top-[48%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[62%] h-[72%] z-10">
+        {/* "Works on existing dialer" callout - fades in after prompts */}
+        <div
+          className="absolute top-[8%] left-[36%] -translate-x-1/2 z-20"
+          style={{
+            opacity: showDialerHighlight ? 1 : 0,
+            transition: 'opacity 0.5s ease-out',
+          }}
+        >
+          <div
+            className="font-comic text-3xl text-center leading-tight"
+            style={{
+              color: '#fff',
+              textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(35, 103, 238, 0.6)',
+            }}
+          >
+            Works on existing dialer
+          </div>
+          {/* Arrow pointing down to dialer */}
+          <div className="flex justify-center mt-2">
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none">
+              <path d="M12 0 L12 32 M4 24 L12 32 L20 24" stroke="#2367EE" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* App Window — upper-left area (moved down to make room for callout) */}
+        <div className="absolute top-[52%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[62%] h-[72%] z-10">
+          {/* Highlight border box - fades in with dialer callout */}
+          <div
+            className="absolute inset-[-12px] rounded-3xl border-[3px] border-[#2367EE] pointer-events-none z-20"
+            style={{
+              opacity: showDialerHighlight ? 1 : 0,
+              transition: 'opacity 0.5s ease-out',
+              boxShadow: '0 0 30px rgba(35, 103, 238, 0.5), inset 0 0 20px rgba(35, 103, 238, 0.1)',
+            }}
+          />
           <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10 bg-[#f8f9fa]">
             {/* Window Chrome */}
             <WindowChrome />

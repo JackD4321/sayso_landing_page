@@ -9,7 +9,6 @@ export function ProductShowcaseDesktop() {
   return (
     <div className="relative">
       <DesktopDemoFrame
-        showRecording={true}
         desktopOverlay={
           <div className="hidden md:block w-full">
             <SaysoWidget

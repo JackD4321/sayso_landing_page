@@ -10,7 +10,7 @@ export function FooterV2() {
               className="flex items-center gap-2 text-white font-bold text-lg md:text-xl hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#FFDE59] focus:ring-offset-2 focus:ring-offset-[#1D4871] rounded-lg px-2 -ml-2 w-fit"
               aria-label="Sayso home"
             >
-              <img src="/logo-pos-horizontal.png" alt="Sayso" className="h-8" />
+              <img src="/logo-neg-transparent-horizontal.png" alt="Sayso" className="h-8" />
             </a>
             <p className="text-sm text-white/70 leading-relaxed max-w-md">
               Win the Moment — real-time call guidance for outbound agents.

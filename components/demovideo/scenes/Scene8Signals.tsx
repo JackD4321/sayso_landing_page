@@ -1,10 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { SafeArea } from '../Stage';
 
 export default function Scene8Signals() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-white v2-halftone">
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -13,6 +14,6 @@ export default function Scene8Signals() {
       >
         Sayso helps you say the right thing at the right time.
       </motion.p>
-    </div>
+    </SafeArea>
   );
 }

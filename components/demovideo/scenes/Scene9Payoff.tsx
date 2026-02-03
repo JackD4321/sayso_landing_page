@@ -1,12 +1,33 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SafeArea } from '../Stage';
 
+const CARD_APPEAR_DELAY_MS = 2500; // time text stays alone before card pops up
+
 export default function Scene9Payoff() {
+  const [showCard, setShowCard] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowCard(true), CARD_APPEAR_DELAY_MS);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
-    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
-      {/* Success card */}
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone gap-10">
+      {/* Intro line: stays on screen the whole time (matches Scene 7 UI) */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="text-3xl md:text-5xl font-comic text-[#1D4871] text-center max-w-4xl px-8 leading-tight tracking-wide"
+      >
+        So you book more appointments.
+      </motion.p>
+
+      {/* Success card — pops up below the text after delay */}
+      {showCard && (
       <motion.div
         initial={{ opacity: 0, scale: 0.85, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -62,9 +83,10 @@ export default function Scene9Payoff() {
           </div>
         </motion.div>
       </motion.div>
+      )}
 
-      {/* Subtle particle burst */}
-      {[...Array(8)].map((_, i) => {
+      {/* Subtle particle burst — only when card is showing */}
+      {showCard && [...Array(8)].map((_, i) => {
         const angle = (i / 8) * Math.PI * 2;
         return (
           <motion.div

@@ -520,9 +520,9 @@ export default function Scene6StartSession() {
   // Zoom transform based on phase
   const zoomStyle = (() => {
     switch (zoomPhase) {
-      // Zoom to dock (bottom center) - translate Y negative moves viewport down to show dock
+      // Zoom to dock, centered on SaySo icon (blue lightning bolt between Calendar and Notes) - translate X pans to center SaySo
       case 'zoom-dock':
-        return { transform: 'scale(1.8) translate(0%, -22%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
+        return { transform: 'scale(1.8) translate(-8%, -22%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
       // Zoom to widget area (top-right) - gentle zoom, keep everything visible
       case 'zoom-widget-in':
         return { transform: 'scale(1.25) translate(-12%, 5%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
@@ -530,11 +530,11 @@ export default function Scene6StartSession() {
         return { transform: 'scale(1.25) translate(-12%, 5%)', transition: 'transform 0.1s ease' };
       case 'zoom-widget-out':
         return { transform: 'scale(1) translate(0%, 0%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
-      // Zoom to dialer area (center-left) - translate X positive moves viewport left to show dialer
+      // Zoom to dialer area - reduced zoom + translate Y positive to pan view UP so "Works on existing dialer" stays visible
       case 'zoom-dialer-in':
-        return { transform: 'scale(1.35) translate(10%, -5%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
+        return { transform: 'scale(1.08) translate(2%, 12%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
       case 'zoom-dialer':
-        return { transform: 'scale(1.35) translate(10%, -5%)', transition: 'transform 0.1s ease' };
+        return { transform: 'scale(1.08) translate(2%, 12%)', transition: 'transform 0.1s ease' };
       case 'zoom-dialer-out':
         return { transform: 'scale(1) translate(0%, 0%)', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' };
       default:
@@ -610,8 +610,8 @@ export default function Scene6StartSession() {
             cursorPhase === 'idle'
               ? { top: '50%', left: '50%' }
               : cursorPhase === 'moving-to-dock'
-              ? { top: '92%', left: '50%' }
-              : { top: '92%', left: '50%' }
+              ? { top: '92%', left: '56%' }
+              : { top: '92%', left: '56%' }
           }
           transition={{ duration: cursorPhase === 'moving-to-dock' ? 0.8 : 0.1, ease: [0.25, 0.1, 0.25, 1] }}
           style={{ width: 24, height: 24 }}

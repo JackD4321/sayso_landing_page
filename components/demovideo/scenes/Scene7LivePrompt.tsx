@@ -18,8 +18,8 @@ export default function Scene7LivePrompt() {
   }, []);
 
   return (
-    <SafeArea className="flex items-center justify-center v2-halftone">
-      <div className="flex gap-8 w-full max-w-4xl">
+    <SafeArea className="flex flex-col items-center justify-center v2-halftone">
+      <div className="flex gap-8 w-full max-w-4xl mx-auto">
         {/* Left: Call view */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}

@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 
 // macOS Menu Bar Component
 function MacOSMenuBar() {
@@ -193,6 +193,44 @@ export function DesktopDemoFrame({
   desktopOverlay?: ReactNode;
   fullscreen?: boolean;
 }) {
+  const [showHighlight, setShowHighlight] = useState(false);
+
+  useEffect(() => {
+    // Animation cycle is 12 seconds
+    // Show highlight at ~4s (when first prompt appears), hide at ~10s (after both prompts shown)
+    const CYCLE_DURATION = 12000;
+    const SHOW_DELAY = 4000;
+    const HIDE_DELAY = 10000;
+
+    const runCycle = () => {
+      // Show highlight
+      const showTimer = setTimeout(() => {
+        setShowHighlight(true);
+      }, SHOW_DELAY);
+
+      // Hide highlight
+      const hideTimer = setTimeout(() => {
+        setShowHighlight(false);
+      }, HIDE_DELAY);
+
+      return { showTimer, hideTimer };
+    };
+
+    // Start first cycle
+    let timers = runCycle();
+
+    // Set up interval for subsequent cycles
+    const interval = setInterval(() => {
+      timers = runCycle();
+    }, CYCLE_DURATION);
+
+    return () => {
+      clearTimeout(timers.showTimer);
+      clearTimeout(timers.hideTimer);
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div className={fullscreen ? "absolute inset-0" : "w-full relative"}>
       {/* Desktop container */}
@@ -233,7 +271,33 @@ export function DesktopDemoFrame({
         {/* SaySo widget — right side, vertically centered with seller half */}
         {desktopOverlay && (
           <div className="absolute top-[36%] right-[3%] z-30" style={{ width: 'clamp(280px, 32vw, 420px)' }}>
-            {desktopOverlay}
+            {/* "Live prompting" label - fades in */}
+            <div
+              className="font-comic text-3xl mb-3 text-center leading-tight"
+              style={{
+                opacity: showHighlight ? 1 : 0,
+                transition: 'opacity 0.5s ease-out',
+                color: '#fff',
+                textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(35, 103, 238, 0.6)',
+              }}
+            >
+              Live prompting
+              <br />
+              in the chat
+            </div>
+            {/* Widget container with highlight border */}
+            <div className="relative">
+              {/* Highlight border box - fades in/out */}
+              <div
+                className="absolute inset-[-10px] rounded-3xl border-[3px] border-[#2367EE] pointer-events-none"
+                style={{
+                  opacity: showHighlight ? 1 : 0,
+                  transition: 'opacity 0.5s ease-out',
+                  boxShadow: '0 0 25px rgba(35, 103, 238, 0.5), inset 0 0 15px rgba(35, 103, 238, 0.1)',
+                }}
+              />
+              {desktopOverlay}
+            </div>
           </div>
         )}
 

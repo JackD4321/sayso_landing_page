@@ -139,9 +139,29 @@ function CaseStudySection({ study }: { study: (typeof CASE_STUDIES)[number] }) {
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-full text-left bg-[#1D4871] px-6 md:px-10 py-8 md:py-10 cursor-pointer hover:bg-[#1a3f63] transition-colors"
         >
-          <div className="flex flex-col md:flex-row items-start gap-6">
-            {/* Logo */}
+          {/* Mobile: Logo + Houses Sold side by side */}
+          <div className="flex md:hidden items-start justify-between gap-4 mb-4">
             <div className="bg-white rounded-2xl p-3 border-2 border-white/20 v2-comic-shadow-sm flex-shrink-0">
+              <Image
+                src={study.logo}
+                alt={study.brokerage}
+                width={64}
+                height={64}
+                className="h-16 w-16 object-contain"
+              />
+            </div>
+            <div className="flex-1 text-right">
+              <p className="text-2xl font-comic text-[#FFDE59] tracking-wide leading-tight">
+                {study.housesSold}
+              </p>
+              <p className="text-xs text-white/50 uppercase tracking-widest font-bold mt-2">Customer since</p>
+              <p className="text-white font-bold text-sm mt-0.5">{study.customerSince}</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row items-start gap-6">
+            {/* Logo - desktop only */}
+            <div className="hidden md:block bg-white rounded-2xl p-3 border-2 border-white/20 v2-comic-shadow-sm flex-shrink-0">
               <Image
                 src={study.logo}
                 alt={study.brokerage}
@@ -177,13 +197,13 @@ function CaseStudySection({ study }: { study: (typeof CASE_STUDIES)[number] }) {
               </div>
             </div>
 
-            {/* Houses sold - big headline on right, aligned to top */}
-            <div className="flex-shrink-0 text-right hidden md:block">
-              <p className="text-4xl md:text-5xl lg:text-6xl font-comic text-[#FFDE59] tracking-wide leading-tight">
+            {/* Houses sold - desktop only */}
+            <div className="hidden md:block flex-shrink-0 text-right">
+              <p className="text-5xl lg:text-6xl font-comic text-[#FFDE59] tracking-wide leading-tight">
                 {study.housesSold}
               </p>
-              <p className="text-sm md:text-base text-white/50 uppercase tracking-widest font-bold mt-4">Customer since</p>
-              <p className="text-white font-bold text-base md:text-lg mt-1">{study.customerSince}</p>
+              <p className="text-base text-white/50 uppercase tracking-widest font-bold mt-4">Customer since</p>
+              <p className="text-white font-bold text-lg mt-1">{study.customerSince}</p>
             </div>
 
             {/* Expand/Collapse Chevron */}

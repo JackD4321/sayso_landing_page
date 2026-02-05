@@ -7,19 +7,19 @@ import { useEffect, useState, useCallback } from 'react';
 const CONVERSATION_CYCLES = [
   {
     buyerMessage: "I'm not sure if now is the right time to sell...",
-    sellerMessage: "I totally understand — what got you thinking about moving in the first place?",
+    sellerMessage: "What got you thinking about moving in the first place?",
     saysoPrompt: "It's understandable to be unsure right now. What got you thinking about moving, and what do you hope that change would bring you?",
     promptSource: 'Objection handling playbook',
   },
   {
     buyerMessage: "We're thinking about Santa Monica for the schools.",
-    sellerMessage: "That's great — what's the most important thing about the neighborhood for your family?",
+    sellerMessage: "What matters most about the neighborhood for you?",
     saysoPrompt: "It's great you're considering Santa Monica! What's most important to you about the location or neighborhood there?",
     promptSource: 'Top performer pattern',
   },
   {
     buyerMessage: "Our current agent charges really high fees...",
-    sellerMessage: "I hear you — what does good value in an agent actually look like for you?",
+    sellerMessage: "What does good value look like to you in an agent?",
     saysoPrompt: "Walk me through what good value looks like to you in an agent relationship.",
     promptSource: 'Past call with Sarah Chen',
   },
@@ -294,11 +294,11 @@ export function SaysoWidget({
               <rect x="1" y="1" width="10" height="10" rx="1.5" />
             </svg>
           </button>
-          <div className="h-8 flex items-center justify-center" style={{ width: '90px', backgroundColor: '#374151', borderRadius: '100px' }}>
+          <div className="h-8 hidden md:flex items-center justify-center" style={{ width: '90px', backgroundColor: '#374151', borderRadius: '100px' }}>
             <span className="text-white text-sm font-light">{timerDisplay}</span>
           </div>
           <button
-            className="w-8 h-8 rounded-full flex items-center justify-center"
+            className="w-8 h-8 rounded-full hidden md:flex items-center justify-center"
             style={{
               background: 'rgba(2, 25, 47, 0.25)',
               backdropFilter: 'blur(200px)',
@@ -448,9 +448,9 @@ function DialerSplitView({
   return (
     <div className="flex-1 flex overflow-hidden">
       {/* Buyer Side (Left) */}
-      <div className="flex-1 flex flex-col items-center justify-start pt-6 md:pt-8 px-3 md:px-6 bg-gradient-to-b from-[#f0f2f5] to-[#e8eaed] border-r border-gray-200">
+      <div className="flex-1 flex flex-col items-center justify-start pt-3 md:pt-8 px-3 md:px-6 bg-gradient-to-b from-[#f0f2f5] to-[#e8eaed] border-r border-gray-200">
         {/* Label */}
-        <div className="flex items-center gap-1.5 mb-4">
+        <div className="flex items-center gap-1.5 mb-2 md:mb-4">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#F59E0B' }} />
           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Buyer</span>
         </div>
@@ -464,18 +464,18 @@ function DialerSplitView({
         />
 
         {/* Name */}
-        <div className="mt-3 text-center">
+        <div className="mt-2 md:mt-3 text-center">
           <p className="text-sm font-bold text-[#1D4871]">Jane Smith</p>
           <p className="text-[11px] text-gray-500">(310) 488-1179</p>
         </div>
 
         {/* Audio waveform */}
-        <div className="mt-3">
+        <div className="mt-2 md:mt-3">
           <AudioWaveform active={buyerSpeaking} color="#F59E0B" />
         </div>
 
         {/* Buyer speech bubble */}
-        <div className="w-full mt-2 max-w-[220px]">
+        <div className="w-full mt-1 md:mt-2 max-w-[220px]">
           <SpeechBubble
             text={cycle.buyerMessage}
             visible={showBuyerMessage}
@@ -485,9 +485,9 @@ function DialerSplitView({
       </div>
 
       {/* Seller Side (Right) */}
-      <div className="flex-1 flex flex-col items-center justify-start pt-6 md:pt-8 px-3 md:px-6 bg-gradient-to-b from-[#f7f8fa] to-[#eef1f5]">
+      <div className="flex-1 flex flex-col items-center justify-start pt-3 md:pt-8 px-3 md:px-6 bg-gradient-to-b from-[#f7f8fa] to-[#eef1f5]">
         {/* Label */}
-        <div className="flex items-center gap-1.5 mb-4">
+        <div className="flex items-center gap-1.5 mb-2 md:mb-4">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#2367EE' }} />
           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">You</span>
         </div>
@@ -501,18 +501,18 @@ function DialerSplitView({
         />
 
         {/* Name */}
-        <div className="mt-3 text-center">
+        <div className="mt-2 md:mt-3 text-center">
           <p className="text-sm font-bold text-[#1D4871]">Alex Walker</p>
           <p className="text-[11px] text-gray-500">SaySo Agent</p>
         </div>
 
         {/* Audio waveform */}
-        <div className="mt-3">
+        <div className="mt-2 md:mt-3">
           <AudioWaveform active={sellerSpeaking} color="#2367EE" />
         </div>
 
         {/* Seller speech bubble — aligned left to avoid overlapping SaySo widget */}
-        <div className="w-full mt-2 max-w-[180px] self-start ml-2">
+        <div className="w-full mt-1 md:mt-2 max-w-[180px] self-start ml-2">
           <SpeechBubble
             text={cycle.sellerMessage}
             visible={showSellerMessage}

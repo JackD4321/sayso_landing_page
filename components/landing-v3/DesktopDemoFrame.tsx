@@ -280,10 +280,10 @@ export function DesktopDemoFrame({
 
         {/* SaySo widget — right side, vertically centered with seller half */}
         {desktopOverlay && (
-          <div className="absolute top-[36%] right-[3%] z-30" style={{ width: 'clamp(280px, 32vw, 420px)' }}>
+          <div className="absolute top-[22%] right-[3%] z-30" style={{ width: 'clamp(240px, 28%, 380px)' }}>
             {/* "Live prompting" label - fades in */}
             <div
-              className="font-comic text-3xl mb-3 text-center leading-tight"
+              className="font-comic text-2xl mb-2 text-center leading-tight"
               style={{
                 opacity: showHighlight ? 1 : 0,
                 transition: 'opacity 0.5s ease-out',
@@ -337,7 +337,7 @@ export function DesktopDemoFrame({
         </div>
 
         {/* App Window — upper-left area (moved down to make room for callout) */}
-        <div className="absolute top-[52%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[62%] h-[72%] z-10">
+        <div className="absolute top-[52%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[62%] h-[76%] z-10">
           {/* Highlight border box - fades in with dialer callout */}
           <div
             className="absolute inset-[-12px] rounded-3xl border-[3px] border-[#2367EE] pointer-events-none z-20"

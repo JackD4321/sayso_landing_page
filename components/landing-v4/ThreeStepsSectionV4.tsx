@@ -117,7 +117,7 @@ function StepVisualStartSayso() {
       <div className="w-full max-w-[240px] flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5 px-2.5 h-8 rounded-full showcase-glass border border-white/15 shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
           <div className="p-0.5 text-white/80"><GridIcon /></div>
-          <span className="text-[11px] text-white/80 whitespace-nowrap">Start Sayso</span>
+          <span className="text-[11px] text-white/80 whitespace-nowrap">Launch Coach</span>
           <div className="flex-shrink-0"><ToggleOnIcon /></div>
         </div>
         <button className="px-3 py-1.5 h-8 rounded-full bg-[#2367EE] text-white text-[11px] font-semibold whitespace-nowrap shadow-sm">
@@ -214,7 +214,7 @@ export function ThreeStepsSectionV4() {
   const steps = [
     {
       number: 1,
-      title: '1 Start Sayso',
+      title: '1. Launch Coach',
       description: 'Turn it on before your outbound calls to get live guidance during the conversation.',
       visual: <StepVisualStartSayso />,
       tilt: 'v2-tilt-left',
@@ -225,7 +225,7 @@ export function ThreeStepsSectionV4() {
     },
     {
       number: 2,
-      title: '2 Get real-time prompts',
+      title: '2. Get real-time prompts',
       description: 'When the call drifts or a prospect throws something unexpected, Sayso suggests what to ask or say next.',
       visual: <StepVisualPrompts />,
       tilt: '',
@@ -236,7 +236,7 @@ export function ThreeStepsSectionV4() {
     },
     {
       number: 3,
-      title: '3 Win the moment',
+      title: '3. Win the moment',
       description: 'Sayso helps you earn the meeting at the right moment—so appointments are more qualified and more likely to happen.',
       visual: <StepVisualBooked />,
       tilt: 'v2-tilt-right',

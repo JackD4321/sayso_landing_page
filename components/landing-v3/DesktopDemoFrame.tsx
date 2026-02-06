@@ -249,27 +249,6 @@ export function DesktopDemoFrame({
           </div>
         )}
 
-        {/* "Works on existing dialer" callout - always visible */}
-        <div
-          className="absolute top-[8%] right-[36%] translate-x-1/2 z-20"
-        >
-          <div
-            className="font-comic text-3xl text-center leading-tight"
-            style={{
-              color: '#fff',
-              textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(35, 103, 238, 0.6)',
-            }}
-          >
-            Works on existing dialer
-          </div>
-          {/* Arrow pointing down to dialer */}
-          <div className="flex justify-center mt-2">
-            <svg width="24" height="40" viewBox="0 0 24 40" fill="none">
-              <path d="M12 0 L12 32 M4 24 L12 32 L20 24" stroke="#2367EE" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-        </div>
-
         {/* App Window — right area */}
         <div className="absolute top-[52%] right-[36%] translate-x-1/2 -translate-y-1/2 w-[62%] h-[76%] z-10">
           {/* Highlight border box - always visible */}
@@ -293,6 +272,7 @@ export function DesktopDemoFrame({
         {/* macOS Dock */}
         <MacOSDock />
       </div>
+
 
     </div>
   );

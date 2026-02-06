@@ -115,13 +115,6 @@ export function TransformationSectionV4() {
           <div className="lg:col-span-2 flex flex-col items-center relative">
             <HeroStarburst />
 
-            {/* "SUPER POWERED!" badge */}
-            <div className="relative mb-4 z-10">
-              <div className="v2-pow-badge px-4 py-1.5 rounded-lg text-sm font-comic tracking-wider transform rotate-3">
-                SUPER POWERED!
-              </div>
-            </div>
-
             {/* Large superhero character */}
             <div className="relative z-10">
               <Image
@@ -170,7 +163,7 @@ export function TransformationSectionV4() {
                 <svg width="18" height="18" viewBox="0 0 512 512" fill="none" className="mr-2">
                   <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="#1D4871" stroke="#1D4871" strokeWidth="20"/>
                 </svg>
-                Start Your Hero Journey
+                Get Started
               </a>
             </div>
           </div>

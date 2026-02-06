@@ -48,13 +48,6 @@ function PanelTheStruggle() {
         />
       </div>
 
-      {/* Caption */}
-      <div className="p-4 md:p-5">
-        <p className="text-sm md:text-base text-[#1D4871]/80 leading-relaxed">
-          Your agent freezes. The prospect objects. The moment is{' '}
-          <span className="v2-pow-badge px-2 py-0.5 rounded text-xs font-comic inline-block">GONE</span>.
-        </p>
-      </div>
     </div>
   );
 }
@@ -81,12 +74,6 @@ function PanelWastedOpportunity() {
         />
       </div>
 
-      {/* Caption */}
-      <div className="p-4 md:p-5">
-        <p className="text-sm md:text-base text-[#1D4871]/80 leading-relaxed">
-          Missed questions. Missed appointments. Missed revenue.
-        </p>
-      </div>
     </div>
   );
 }
@@ -98,7 +85,7 @@ export function PainPointPanelV4() {
         {/* Comic narrator box */}
         <div className="flex justify-center mb-8 md:mb-12">
           <div className="bg-[#1D4871] text-white px-5 py-2 rounded-lg v2-comic-shadow-sm transform -rotate-1">
-            <span className="font-comic text-lg md:text-xl tracking-wide">Meanwhile, without SaySo...</span>
+            <span className="font-comic text-lg md:text-xl tracking-wide">Without SaySo...</span>
           </div>
         </div>
 

@@ -7,6 +7,7 @@ import { useDemoCalendar } from './DemoCalendarProvider';
 const NAV_LINKS = [
   { label: 'Home', href: '#top' },
   { label: 'How Sayso Works', href: '#how-it-works' },
+  { label: 'Case Study', href: '/case-studies' },
   { label: 'Demo', href: '#demo', isCalendar: true },
   { label: 'Download', href: '#download', noop: true },
   { label: 'Contact', href: '#contact', isContact: true },

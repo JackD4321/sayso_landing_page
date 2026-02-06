@@ -107,7 +107,7 @@ export default function SaysoNavbarV4() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg text-[#1D4871] font-bold text-base hover:bg-[#FFDE59]/20 transition-colors"
+                  className="block px-4 py-3 rounded-lg text-[#1D4871] font-bold text-base text-right hover:bg-[#FFDE59]/20 transition-colors"
                 >
                   {link.label}
                 </a>

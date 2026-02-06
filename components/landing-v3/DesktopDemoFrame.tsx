@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode } from 'react';
 import Image from 'next/image';
 
 // macOS Menu Bar Component
@@ -194,53 +194,6 @@ export function DesktopDemoFrame({
   desktopOverlay?: ReactNode;
   fullscreen?: boolean;
 }) {
-  const [showHighlight, setShowHighlight] = useState(false);
-  const [showDialerHighlight, setShowDialerHighlight] = useState(false);
-
-  useEffect(() => {
-    // Animation cycle is 14 seconds
-    // SaySo highlight: show at 3s, hide at 10s (7 seconds of visibility)
-    // "Works on existing dialer" highlight: show at 10s, hide at 14s (4 seconds of visibility)
-    const CYCLE_DURATION = 14000;
-    const PROMPT_SHOW_DELAY = 3000;
-    const PROMPT_HIDE_DELAY = 10000;
-    const DIALER_SHOW_DELAY = 10000;
-
-    const runCycle = () => {
-      // Show "Live prompting" highlight
-      const promptShowTimer = setTimeout(() => {
-        setShowHighlight(true);
-      }, PROMPT_SHOW_DELAY);
-
-      // Hide "Live prompting" highlight, show "Works on existing dialer"
-      const promptHideTimer = setTimeout(() => {
-        setShowHighlight(false);
-        setShowDialerHighlight(true);
-      }, PROMPT_HIDE_DELAY);
-
-      // Hide "Works on existing dialer" at cycle reset
-      const dialerHideTimer = setTimeout(() => {
-        setShowDialerHighlight(false);
-      }, CYCLE_DURATION);
-
-      return { promptShowTimer, promptHideTimer, dialerHideTimer };
-    };
-
-    // Start first cycle
-    let timers = runCycle();
-
-    // Set up interval for subsequent cycles
-    const interval = setInterval(() => {
-      timers = runCycle();
-    }, CYCLE_DURATION);
-
-    return () => {
-      clearTimeout(timers.promptShowTimer);
-      clearTimeout(timers.promptHideTimer);
-      clearTimeout(timers.dialerHideTimer);
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
     <div className={fullscreen ? "absolute inset-0" : "w-full relative"}>
@@ -284,12 +237,10 @@ export function DesktopDemoFrame({
           <div className="absolute top-[24%] left-[3%] z-30" style={{ width: 'clamp(280px, 34%, 440px)' }}>
             {/* Widget container with highlight border */}
             <div className="relative">
-              {/* Highlight border box - fades in/out */}
+              {/* Highlight border box - always visible */}
               <div
                 className="absolute inset-[-10px] rounded-3xl border-[3px] border-[#2367EE] pointer-events-none"
                 style={{
-                  opacity: showHighlight ? 1 : 0,
-                  transition: 'opacity 0.5s ease-out',
                   boxShadow: '0 0 25px rgba(35, 103, 238, 0.5), inset 0 0 15px rgba(35, 103, 238, 0.1)',
                 }}
               />
@@ -298,13 +249,9 @@ export function DesktopDemoFrame({
           </div>
         )}
 
-        {/* "Works on existing dialer" callout - fades in after prompts */}
+        {/* "Works on existing dialer" callout - always visible */}
         <div
           className="absolute top-[8%] right-[36%] translate-x-1/2 z-20"
-          style={{
-            opacity: showDialerHighlight ? 1 : 0,
-            transition: 'opacity 0.5s ease-out',
-          }}
         >
           <div
             className="font-comic text-3xl text-center leading-tight"
@@ -325,12 +272,10 @@ export function DesktopDemoFrame({
 
         {/* App Window — right area */}
         <div className="absolute top-[52%] right-[36%] translate-x-1/2 -translate-y-1/2 w-[62%] h-[76%] z-10">
-          {/* Highlight border box - fades in with dialer callout */}
+          {/* Highlight border box - always visible */}
           <div
             className="absolute inset-[-12px] rounded-3xl border-[3px] border-[#2367EE] pointer-events-none z-20"
             style={{
-              opacity: showDialerHighlight ? 1 : 0,
-              transition: 'opacity 0.5s ease-out',
               boxShadow: '0 0 30px rgba(35, 103, 238, 0.5), inset 0 0 20px rgba(35, 103, 238, 0.1)',
             }}
           />

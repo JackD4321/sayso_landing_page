@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ProductShowcaseDesktop } from '../landing-v3/ProductShowcaseDesktop';
 import { useDemoCalendar } from './DemoCalendarProvider';
@@ -14,32 +13,6 @@ export function HeroWithVideoV4() {
   // Duplicate logos for seamless marquee scroll
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
   const { openDemoCalendar } = useDemoCalendar();
-
-  // Superhero visibility synced with DesktopDemoFrame highlight cycle (14s total)
-  const [showSuperhero, setShowSuperhero] = useState(false);
-
-  useEffect(() => {
-    const CYCLE = 14000;
-    const SHOW_AT = 3000;
-    const HIDE_AT = 10000;
-
-    const runCycle = () => {
-      const show = setTimeout(() => setShowSuperhero(true), SHOW_AT);
-      const hide = setTimeout(() => setShowSuperhero(false), HIDE_AT);
-      return { show, hide };
-    };
-
-    let timers = runCycle();
-    const interval = setInterval(() => {
-      timers = runCycle();
-    }, CYCLE);
-
-    return () => {
-      clearTimeout(timers.show);
-      clearTimeout(timers.hide);
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
     <>
@@ -70,14 +43,9 @@ export function HeroWithVideoV4() {
           {/* Two-column layout: text left, video far right */}
           <div className="relative flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8">
 
-            {/* Superhero — appears in the gap pointing right at the SaySo widget */}
+            {/* Superhero — always visible, pointing right at the SaySo top bar */}
             <div
-              className="hidden lg:block absolute top-[15%] left-[28%] z-30 pointer-events-none"
-              style={{
-                opacity: showSuperhero ? 1 : 0,
-                transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-                transform: showSuperhero ? 'scale(1) translateY(0)' : 'scale(0.5) translateY(20px)',
-              }}
+              className="hidden lg:block absolute top-[-5%] left-[28%] z-30 pointer-events-none"
             >
               <Image
                 src="/this_is_sayso_right.png"

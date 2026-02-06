@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useRef, useState, useEffect } from 'react';
+import { ReactNode, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 // macOS Menu Bar Component
@@ -188,44 +188,38 @@ export function DesktopDemoFrame({
   showRecording = false,
   desktopOverlay,
   fullscreen = false,
+  onWidgetPosition,
 }: {
   children: ReactNode;
   showRecording?: boolean;
   desktopOverlay?: ReactNode;
   fullscreen?: boolean;
+  onWidgetPosition?: (pos: { bottom: number; centerX: number }) => void;
 }) {
-  const outerRef = useRef<HTMLDivElement>(null);
   const widgetRef = useRef<HTMLDivElement>(null);
-  const [heroPos, setHeroPos] = useState<{ top: number; left: number } | null>(null);
 
   useEffect(() => {
     const widget = widgetRef.current;
-    const outer = outerRef.current;
-    if (!widget || !outer) return;
+    if (!widget || !onWidgetPosition) return;
 
     const update = () => {
-      const wRect = widget.getBoundingClientRect();
-      const oRect = outer.getBoundingClientRect();
-      // Position at the bottom of the highlight border (widget bottom + 10px for inset-[-10px])
-      setHeroPos({
-        top: wRect.bottom - oRect.top + 10,
-        left: wRect.left + wRect.width / 2 - oRect.left,
-      });
+      // Use offset properties for un-scaled layout coordinates
+      const parent = widget.offsetParent as HTMLElement;
+      if (!parent) return;
+      const bottom = parent.offsetTop + widget.offsetTop + widget.offsetHeight + 10;
+      const centerX = parent.offsetLeft + widget.offsetLeft + widget.offsetWidth / 2;
+      onWidgetPosition({ bottom, centerX });
     };
 
     update();
     const observer = new ResizeObserver(update);
     observer.observe(widget);
-    window.addEventListener('resize', update);
 
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', update);
-    };
-  }, []);
+    return () => observer.disconnect();
+  }, [onWidgetPosition]);
 
   return (
-    <div ref={outerRef} className={fullscreen ? "absolute inset-0" : "w-full relative"}>
+    <div className={fullscreen ? "absolute inset-0" : "w-full relative"}>
       {/* Desktop container */}
       <div className={`relative overflow-hidden ${fullscreen ? 'w-full h-full' : 'w-full aspect-[16/10] rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.4)] border border-[#3a3a3c]'}`}>
         {/* macOS Sonoma/Sequoia-style wallpaper — dark navy to teal */}
@@ -302,21 +296,6 @@ export function DesktopDemoFrame({
         <MacOSDock />
       </div>
 
-      {/* Mobile superhero — tracks bottom-center of SaySo widget highlight */}
-      {!fullscreen && heroPos && (
-        <div
-          className="lg:hidden absolute z-40 pointer-events-none -translate-x-1/2"
-          style={{ top: heroPos.top, left: heroPos.left }}
-        >
-          <Image
-            src="/this_is_sayso_point_up.png"
-            alt="This is SaySo"
-            width={210}
-            height={210}
-            className="w-[180px] sm:w-[210px] h-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.25)]"
-          />
-        </div>
-      )}
 
     </div>
   );

@@ -16,7 +16,7 @@ export default function V4Page() {
         <PainPointPanelV4 />
         <TransformationSectionV4 />
         <ThreeStepsSectionV4 />
-        <PricingSectionV4 />
+        {/* <PricingSectionV4 /> */}
         <FooterV4 />
       </div>
     </DemoCalendarProvider>

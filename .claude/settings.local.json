@@ -6,7 +6,9 @@
       "Bash(findstr:*)",
       "Bash(dir:*)",
       "Bash(find:*)",
-      "Bash(del \"c:\\\\sayso\\\\sayso_landing_page\\\\app\\\\v3\\\\layout.tsx\")"
+      "Bash(del \"c:\\\\sayso\\\\sayso_landing_page\\\\app\\\\v3\\\\layout.tsx\")",
+      "Bash(ls:*)",
+      "Bash(npx next build:*)"
     ]
   }
 }

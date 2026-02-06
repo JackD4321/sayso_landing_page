@@ -122,9 +122,9 @@ export function HeroWithVideoV4() {
           <div className="mt-6 md:mt-8 pt-4 md:pt-6">
             {/* Label */}
             <div className="flex justify-center mb-5">
-              <span className="v2-pow-badge px-4 py-1.5 rounded-lg text-sm font-comic tracking-wider">
-                TRUSTED BY TEAMS RUNNING OUTBOUND EVERY DAY
-              </span>
+              <div className="bg-[#1D4871] text-white px-5 py-2 rounded-lg v2-comic-shadow-sm transform -rotate-1 inline-block">
+                <span className="font-comic text-sm md:text-base tracking-wide">Trusted by Teams Running Outbound Every Day</span>
+              </div>
             </div>
 
             {/* Marquee */}

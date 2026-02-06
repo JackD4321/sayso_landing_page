@@ -83,6 +83,17 @@ export function HeroWithVideoV4() {
             {/* RIGHT COLUMN — demo video */}
             <div className="relative flex-shrink-0 lg:w-[55%]">
               <ProductShowcaseDesktop />
+              {/* Mobile narrator badge — overlays top of demo frame */}
+              <div className="flex lg:hidden justify-end pointer-events-none absolute top-[-10px] right-2 z-40">
+                <div
+                  className="bg-[#FFDE59] border-2 border-[#1D4871] px-3 py-1.5 rounded-md transform -rotate-2"
+                  style={{ boxShadow: '2px 2px 0px #1D4871' }}
+                >
+                  <span className="font-comic text-[#1D4871] text-sm sm:text-base tracking-wide whitespace-nowrap">
+                    Works with existing dialer or CRM!
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* "Works with existing dialer or CRM" — comic narrator badge overlaying the demo frame */}

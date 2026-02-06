@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 
 // macOS Menu Bar Component
@@ -194,9 +194,38 @@ export function DesktopDemoFrame({
   desktopOverlay?: ReactNode;
   fullscreen?: boolean;
 }) {
+  const outerRef = useRef<HTMLDivElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
+  const [heroPos, setHeroPos] = useState<{ top: number; left: number } | null>(null);
+
+  useEffect(() => {
+    const widget = widgetRef.current;
+    const outer = outerRef.current;
+    if (!widget || !outer) return;
+
+    const update = () => {
+      const wRect = widget.getBoundingClientRect();
+      const oRect = outer.getBoundingClientRect();
+      // Position at the bottom of the highlight border (widget bottom + 10px for inset-[-10px])
+      setHeroPos({
+        top: wRect.bottom - oRect.top + 10,
+        left: wRect.left + wRect.width / 2 - oRect.left,
+      });
+    };
+
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(widget);
+    window.addEventListener('resize', update);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', update);
+    };
+  }, []);
 
   return (
-    <div className={fullscreen ? "absolute inset-0" : "w-full relative"}>
+    <div ref={outerRef} className={fullscreen ? "absolute inset-0" : "w-full relative"}>
       {/* Desktop container */}
       <div className={`relative overflow-hidden ${fullscreen ? 'w-full h-full' : 'w-full aspect-[16/10] rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.4)] border border-[#3a3a3c]'}`}>
         {/* macOS Sonoma/Sequoia-style wallpaper — dark navy to teal */}
@@ -236,7 +265,7 @@ export function DesktopDemoFrame({
         {desktopOverlay && (
           <div className="absolute top-[24%] left-[3%] z-30" style={{ width: 'clamp(280px, 34%, 440px)' }}>
             {/* Widget container with highlight border */}
-            <div className="relative">
+            <div ref={widgetRef} className="relative">
               {/* Highlight border box - always visible */}
               <div
                 className="absolute inset-[-10px] rounded-3xl border-[3px] border-[#2367EE] pointer-events-none"
@@ -273,6 +302,21 @@ export function DesktopDemoFrame({
         <MacOSDock />
       </div>
 
+      {/* Mobile superhero — tracks bottom-center of SaySo widget highlight */}
+      {!fullscreen && heroPos && (
+        <div
+          className="lg:hidden absolute z-40 pointer-events-none -translate-x-1/2"
+          style={{ top: heroPos.top, left: heroPos.left }}
+        >
+          <Image
+            src="/this_is_sayso_point_up.png"
+            alt="This is SaySo"
+            width={210}
+            height={210}
+            className="w-[180px] sm:w-[210px] h-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.25)]"
+          />
+        </div>
+      )}
 
     </div>
   );

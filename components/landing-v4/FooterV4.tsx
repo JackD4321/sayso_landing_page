@@ -52,7 +52,7 @@ export function FooterV4() {
             <svg width="12" height="12" viewBox="0 0 512 512" fill="none" className="inline-block">
               <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="currentColor" stroke="currentColor" strokeWidth="20"/>
             </svg>
-            &copy; 2026 Sayso. All rights reserved.
+            &copy; 2026 AskSayso, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-3 text-xs text-white/50">
             <a href="#privacy" className="hover:text-white/70 transition-colors">Privacy</a>

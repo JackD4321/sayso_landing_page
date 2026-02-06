@@ -278,9 +278,9 @@ export function DesktopDemoFrame({
         {/* Recording Indicator */}
         {showRecording && <RecordingIndicator time="0:17" />}
 
-        {/* SaySo widget — right side, vertically centered with seller half */}
+        {/* SaySo widget — left side, vertically centered */}
         {desktopOverlay && (
-          <div className="absolute top-[22%] right-[3%] z-30" style={{ width: 'clamp(240px, 28%, 380px)' }}>
+          <div className="absolute top-[22%] left-[3%] z-30" style={{ width: 'clamp(240px, 28%, 380px)' }}>
             {/* "Live prompting" label - fades in */}
             <div
               className="font-comic text-2xl mb-2 text-center leading-tight"
@@ -313,7 +313,7 @@ export function DesktopDemoFrame({
 
         {/* "Works on existing dialer" callout - fades in after prompts */}
         <div
-          className="absolute top-[8%] left-[36%] -translate-x-1/2 z-20"
+          className="absolute top-[8%] right-[36%] translate-x-1/2 z-20"
           style={{
             opacity: showDialerHighlight ? 1 : 0,
             transition: 'opacity 0.5s ease-out',
@@ -336,8 +336,8 @@ export function DesktopDemoFrame({
           </div>
         </div>
 
-        {/* App Window — upper-left area (moved down to make room for callout) */}
-        <div className="absolute top-[52%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[62%] h-[76%] z-10">
+        {/* App Window — right area */}
+        <div className="absolute top-[52%] right-[36%] translate-x-1/2 -translate-y-1/2 w-[62%] h-[76%] z-10">
           {/* Highlight border box - fades in with dialer callout */}
           <div
             className="absolute inset-[-12px] rounded-3xl border-[3px] border-[#2367EE] pointer-events-none z-20"

@@ -14,8 +14,9 @@ export function ProductShowcaseDesktop() {
   useEffect(() => {
     const update = () => {
       if (!containerRef.current) return;
-      if (window.innerWidth < 768) {
-        setMobileScale(containerRef.current.clientWidth / DESKTOP_RENDER_WIDTH);
+      const containerWidth = containerRef.current.clientWidth;
+      if (containerWidth < DESKTOP_RENDER_WIDTH) {
+        setMobileScale(containerWidth / DESKTOP_RENDER_WIDTH);
       } else {
         setMobileScale(null);
       }

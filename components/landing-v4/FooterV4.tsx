@@ -65,7 +65,7 @@ export function FooterV4() {
       {/* Subtle superhero Easter egg in corner */}
       <div className="absolute bottom-4 right-4 pointer-events-none">
         <Image
-          src="/sayso_superhero.png"
+          src="/sayso_superhero_point_right.png"
           alt=""
           width={48}
           height={51}

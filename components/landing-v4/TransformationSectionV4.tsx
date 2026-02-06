@@ -125,7 +125,7 @@ export function TransformationSectionV4() {
             {/* Large superhero character */}
             <div className="relative z-10">
               <Image
-                src="/sayso_superhero.png"
+                src="/sayso_superhero_point_right.png"
                 alt="SaySo Superhero"
                 width={484}
                 height={515}

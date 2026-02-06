@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // macOS Menu Bar Component
 function MacOSMenuBar() {
@@ -280,21 +281,7 @@ export function DesktopDemoFrame({
 
         {/* SaySo widget — left side, vertically centered */}
         {desktopOverlay && (
-          <div className="absolute top-[22%] left-[3%] z-30" style={{ width: 'clamp(240px, 28%, 380px)' }}>
-            {/* "Live prompting" label - fades in */}
-            <div
-              className="font-comic text-2xl mb-2 text-center leading-tight"
-              style={{
-                opacity: showHighlight ? 1 : 0,
-                transition: 'opacity 0.5s ease-out',
-                color: '#fff',
-                textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(35, 103, 238, 0.6)',
-              }}
-            >
-              Live prompting
-              <br />
-              in the chat
-            </div>
+          <div className="absolute top-[22%] left-[3%] z-30" style={{ width: 'clamp(280px, 34%, 440px)' }}>
             {/* Widget container with highlight border */}
             <div className="relative">
               {/* Highlight border box - fades in/out */}
@@ -361,6 +348,26 @@ export function DesktopDemoFrame({
         {/* macOS Dock */}
         <MacOSDock />
       </div>
+
+      {/* Superhero pointing at SaySo widget — positioned outside desktop in the white space */}
+      {desktopOverlay && (
+        <div
+          className="absolute top-[20%] -left-[22%] z-40 pointer-events-none"
+          style={{
+            opacity: showHighlight ? 1 : 0,
+            transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+            transform: showHighlight ? 'scale(1) translateX(0)' : 'scale(0.6) translateX(30px)',
+          }}
+        >
+          <Image
+            src="/sayso_superhero_point_right.png"
+            alt="SaySo superhero"
+            width={300}
+            height={300}
+            className="w-[180px] h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
+          />
+        </div>
+      )}
     </div>
   );
 }

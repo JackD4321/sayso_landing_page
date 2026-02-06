@@ -36,13 +36,13 @@ export function HeroWithVideoV4() {
       `}</style>
 
       <section className="relative bg-white pt-16 pb-4 md:pt-20 md:pb-6 lg:pt-24 lg:pb-8 overflow-hidden v2-halftone">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="max-w-[1600px] mx-auto px-6">
 
-          {/* Two-column grid: text left, video right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-8 lg:gap-16 items-center">
+          {/* Two-column layout: text left, video far right */}
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8">
 
             {/* LEFT COLUMN — headline, tagline, CTAs */}
-            <div className="text-left">
+            <div className="text-left lg:max-w-md flex-shrink-0">
               <div className="mb-3 md:mb-4">
                 <h1 className="font-comic text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-wide leading-[1.05] text-[#1D4871] v4-slide-in-left">
                   Win the Moment
@@ -72,7 +72,7 @@ export function HeroWithVideoV4() {
             </div>
 
             {/* RIGHT COLUMN — demo video */}
-            <div className="relative">
+            <div className="relative flex-shrink-0 lg:w-[55%]">
               <ProductShowcaseDesktop />
             </div>
           </div>

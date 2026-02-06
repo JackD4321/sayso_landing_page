@@ -104,7 +104,7 @@ function PanelNumberBadge({ number }: { number: number }) {
   return (
     <div className="absolute -top-2 -left-2 z-20">
       <span className="v2-pow-badge px-2 py-0.5 rounded text-[10px] font-comic tracking-wider">
-        PANEL {number}
+        STEP {number}
       </span>
     </div>
   );
@@ -196,12 +196,6 @@ function StepCard({ title, description, visual, tilt, number, soundEffect, sound
       {/* Visual Card — comic panel with V4 enhancements */}
       <div className="relative w-full max-w-[280px] aspect-[4/3] rounded-2xl v4-panel-border bg-[#F4F4F5] v2-comic-shadow mb-6 overflow-visible">
         <PanelNumberBadge number={number} />
-        <SoundEffectBadge
-          text={soundEffect}
-          color={soundColor}
-          rotate={soundRotate}
-          className={soundPosition}
-        />
         <div className="w-full h-full rounded-[13px] overflow-hidden">
           {visual}
         </div>

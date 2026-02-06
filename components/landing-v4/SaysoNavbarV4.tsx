@@ -53,14 +53,6 @@ export default function SaysoNavbarV4() {
             aria-label="Sayso home"
           >
             <img src="/logo-pos-horizontal.png" alt="Sayso" className="h-8" />
-            <Image
-              src="/sayso_superhero.png"
-              alt=""
-              width={36}
-              height={38}
-              className="h-9 w-auto -ml-1 v4-hero-float hidden sm:block"
-              aria-hidden="true"
-            />
           </a>
 
           {/* Desktop Nav Links */}

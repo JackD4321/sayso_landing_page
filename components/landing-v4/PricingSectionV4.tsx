@@ -23,20 +23,6 @@ function PricingCardV4({ plan }: { plan: PricingPlan }) {
         </div>
       )}
 
-      {/* Superhero peeking from popular card */}
-      {plan.isPopular && (
-        <div className="absolute -top-6 -right-4 z-10">
-          <Image
-            src="/sayso_superhero.png"
-            alt=""
-            width={48}
-            height={51}
-            className="w-12 h-auto drop-shadow-md"
-            aria-hidden="true"
-          />
-        </div>
-      )}
-
       <h3 className="font-comic text-2xl md:text-3xl text-[#1D4871] mb-2 tracking-wide">
         {plan.title}
       </h3>
@@ -130,11 +116,6 @@ export function PricingSectionV4() {
     <section id="pricing" className="bg-[#F8F8FA] py-16 md:py-20 v2-halftone relative">
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <div className="flex justify-center mb-4">
-            <span className="v2-pow-badge px-3 py-1 rounded-lg text-xs font-comic tracking-wider">
-              POWER UP
-            </span>
-          </div>
           <h2 className="font-comic text-3xl md:text-4xl lg:text-5xl text-[#1D4871] mb-4 tracking-wide">
             Choose Your Superpower.
           </h2>

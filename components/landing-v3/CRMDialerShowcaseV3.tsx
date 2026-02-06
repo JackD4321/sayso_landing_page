@@ -294,23 +294,6 @@ export function SaysoWidget({
               <rect x="1" y="1" width="10" height="10" rx="1.5" />
             </svg>
           </button>
-          <div className="h-8 hidden md:flex items-center justify-center" style={{ width: '90px', backgroundColor: '#374151', borderRadius: '100px' }}>
-            <span className="text-white text-sm font-light">{timerDisplay}</span>
-          </div>
-          <button
-            className="w-8 h-8 rounded-full hidden md:flex items-center justify-center"
-            style={{
-              background: 'rgba(2, 25, 47, 0.25)',
-              backdropFilter: 'blur(200px)',
-              WebkitBackdropFilter: 'blur(200px)',
-              boxShadow: 'inset 0 1px 0 rgba(114, 126, 137, 0.12)',
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8 10a2 2 0 100-4 2 2 0 000 4z" fill="white" />
-              <path d="M8 3C4.5 3 1.5 5.5 1 8c.5 2.5 3.5 5 7 5s6.5-2.5 7-5c-.5-2.5-3.5-5-7-5z" stroke="white" strokeWidth="1.5" fill="none" />
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -332,17 +315,17 @@ export function SaysoWidget({
               <div
                 className="flex items-center"
                 style={{
-                  borderRadius: '12px',
-                  minHeight: '40px',
-                  padding: '10px 14px',
-                  border: '0.5px solid rgba(255, 255, 255, 0.08)',
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  borderRadius: '14px',
+                  minHeight: '48px',
+                  padding: '12px 16px',
+                  border: '0.5px solid rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(255, 255, 255, 0.07)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.03)',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.04)',
                 }}
               >
-                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '13.5px', lineHeight: '1.45', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '15px', lineHeight: '1.5', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
                   {CONVERSATION_CYCLES[currentCycle].saysoPrompt}
                 </p>
               </div>
@@ -353,9 +336,9 @@ export function SaysoWidget({
               <div
                 className="flex items-center"
                 style={{
-                  borderRadius: '12px',
-                  minHeight: '40px',
-                  padding: '10px 14px',
+                  borderRadius: '14px',
+                  minHeight: '48px',
+                  padding: '12px 16px',
                   border: '0.5px solid rgba(255, 255, 255, 0.06)',
                   background: 'rgba(255, 255, 255, 0.04)',
                   backdropFilter: 'blur(20px)',
@@ -363,7 +346,7 @@ export function SaysoWidget({
                   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.02)',
                 }}
               >
-                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '13.5px', lineHeight: '1.45', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '15px', lineHeight: '1.5', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
                   {CONVERSATION_CYCLES[(currentCycle + 1) % CONVERSATION_CYCLES.length].saysoPrompt}
                 </p>
               </div>
@@ -447,76 +430,72 @@ function DialerSplitView({
 
   return (
     <div className="flex-1 flex overflow-hidden">
-      {/* Buyer Side (Left) */}
-      <div className="flex-1 flex flex-col items-center justify-start pt-3 md:pt-8 px-3 md:px-6 bg-gradient-to-b from-[#f0f2f5] to-[#e8eaed] border-r border-gray-200">
-        {/* Label */}
-        <div className="flex items-center gap-1.5 mb-2 md:mb-4">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#F59E0B' }} />
-          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Buyer</span>
-        </div>
-
-        {/* Avatar */}
-        <ParticipantAvatar
-          initials="JS"
-          color="linear-gradient(135deg, #F59E0B, #D97706)"
-          speaking={buyerSpeaking}
-          ringColor="#F59E0B"
-        />
-
-        {/* Name */}
-        <div className="mt-2 md:mt-3 text-center">
-          <p className="text-sm font-bold text-[#1D4871]">Jane Smith</p>
-          <p className="text-[11px] text-gray-500">(310) 488-1179</p>
-        </div>
-
-        {/* Audio waveform */}
-        <div className="mt-2 md:mt-3">
-          <AudioWaveform active={buyerSpeaking} color="#F59E0B" />
-        </div>
-
-        {/* Buyer speech bubble */}
-        <div className="w-full mt-1 md:mt-2 max-w-[220px]">
-          <SpeechBubble
-            text={cycle.buyerMessage}
-            visible={showBuyerMessage}
-            side="buyer"
+      {/* YOU Side (Left) */}
+      <div className="flex-1 flex flex-col items-center justify-start pt-3 md:pt-5 px-3 md:px-5 bg-gradient-to-b from-[#f7f8fa] to-[#eef1f5] border-r border-gray-200">
+        {/* Compact horizontal: avatar + info */}
+        <div className="flex items-center gap-3 justify-center">
+          <ParticipantAvatar
+            initials="AW"
+            color="linear-gradient(135deg, #2367EE, #1D4871)"
+            speaking={sellerSpeaking}
+            ringColor="#2367EE"
           />
-        </div>
-      </div>
-
-      {/* Seller Side (Right) */}
-      <div className="flex-1 flex flex-col items-center justify-start pt-3 md:pt-8 px-3 md:px-6 bg-gradient-to-b from-[#f7f8fa] to-[#eef1f5]">
-        {/* Label */}
-        <div className="flex items-center gap-1.5 mb-2 md:mb-4">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#2367EE' }} />
-          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">You</span>
-        </div>
-
-        {/* Avatar */}
-        <ParticipantAvatar
-          initials="AW"
-          color="linear-gradient(135deg, #2367EE, #1D4871)"
-          speaking={sellerSpeaking}
-          ringColor="#2367EE"
-        />
-
-        {/* Name */}
-        <div className="mt-2 md:mt-3 text-center">
-          <p className="text-sm font-bold text-[#1D4871]">Alex Walker</p>
-          <p className="text-[11px] text-gray-500">SaySo Agent</p>
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5">
+              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#2367EE' }} />
+              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">You</span>
+            </div>
+            <p className="text-sm font-bold text-[#1D4871]">Alex Walker</p>
+            <p className="text-[11px] text-gray-500">SaySo Agent</p>
+          </div>
         </div>
 
         {/* Audio waveform */}
-        <div className="mt-2 md:mt-3">
+        <div className="mt-2">
           <AudioWaveform active={sellerSpeaking} color="#2367EE" />
         </div>
 
-        {/* Seller speech bubble — aligned left to avoid overlapping SaySo widget */}
-        <div className="w-full mt-1 md:mt-2 max-w-[180px] self-start ml-2">
+        {/* Seller speech bubble */}
+        <div className="w-full mt-2 max-w-[220px]">
           <SpeechBubble
             text={cycle.sellerMessage}
             visible={showSellerMessage}
             side="seller"
+          />
+        </div>
+      </div>
+
+      {/* BUYER Side (Right) */}
+      <div className="flex-1 flex flex-col items-center justify-start pt-3 md:pt-5 px-3 md:px-5 bg-gradient-to-b from-[#f0f2f5] to-[#e8eaed]">
+        {/* Compact horizontal: avatar + info */}
+        <div className="flex items-center gap-3 justify-center">
+          <ParticipantAvatar
+            initials="JS"
+            color="linear-gradient(135deg, #F59E0B, #D97706)"
+            speaking={buyerSpeaking}
+            ringColor="#F59E0B"
+          />
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5">
+              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#F59E0B' }} />
+              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Buyer</span>
+            </div>
+            <p className="text-sm font-bold text-[#1D4871]">Jane Smith</p>
+            <p className="text-[11px] text-gray-500">(310) 488-1179</p>
+          </div>
+        </div>
+
+        {/* Audio waveform */}
+        <div className="mt-2">
+          <AudioWaveform active={buyerSpeaking} color="#F59E0B" />
+        </div>
+
+        {/* Buyer speech bubble */}
+        <div className="w-full mt-2 max-w-[220px]">
+          <SpeechBubble
+            text={cycle.buyerMessage}
+            visible={showBuyerMessage}
+            side="buyer"
           />
         </div>
       </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ProductShowcaseDesktop } from '../landing-v3/ProductShowcaseDesktop';
 
@@ -11,6 +12,32 @@ const logos = [
 export function HeroWithVideoV4() {
   // Duplicate logos for seamless marquee scroll
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
+
+  // Superhero visibility synced with DesktopDemoFrame highlight cycle (14s total)
+  const [showSuperhero, setShowSuperhero] = useState(false);
+
+  useEffect(() => {
+    const CYCLE = 14000;
+    const SHOW_AT = 3000;
+    const HIDE_AT = 10000;
+
+    const runCycle = () => {
+      const show = setTimeout(() => setShowSuperhero(true), SHOW_AT);
+      const hide = setTimeout(() => setShowSuperhero(false), HIDE_AT);
+      return { show, hide };
+    };
+
+    let timers = runCycle();
+    const interval = setInterval(() => {
+      timers = runCycle();
+    }, CYCLE);
+
+    return () => {
+      clearTimeout(timers.show);
+      clearTimeout(timers.hide);
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <>
@@ -39,11 +66,29 @@ export function HeroWithVideoV4() {
         <div className="max-w-[1600px] mx-auto px-6">
 
           {/* Two-column layout: text left, video far right */}
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8">
+          <div className="relative flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8">
+
+            {/* Superhero — appears in the gap pointing right at the SaySo widget */}
+            <div
+              className="hidden lg:block absolute top-[15%] left-[28%] z-30 pointer-events-none"
+              style={{
+                opacity: showSuperhero ? 1 : 0,
+                transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                transform: showSuperhero ? 'scale(1) translateY(0)' : 'scale(0.5) translateY(20px)',
+              }}
+            >
+              <Image
+                src="/this_is_sayso_right.png"
+                alt="This is SaySo"
+                width={300}
+                height={300}
+                className="w-[300px] h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.2)]"
+              />
+            </div>
 
             {/* LEFT COLUMN — headline, tagline, CTAs */}
             <div className="text-left lg:max-w-md flex-shrink-0">
-              <div className="mb-3 md:mb-4">
+              <div className="mb-3 md:mb-4 lg:pl-4">
                 <h1 className="font-comic text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-wide leading-[1.05] text-[#1D4871] v4-slide-in-left">
                   Win the Moment
                 </h1>
@@ -54,19 +99,13 @@ export function HeroWithVideoV4() {
                 Guidance that shows up during the call—before the moment passes.
               </p>
 
-              {/* CTAs */}
-              <div className="mt-5 md:mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              {/* CTA */}
+              <div className="mt-5 md:mt-6 flex justify-center">
                 <a
                   href="#"
-                  className="inline-flex items-center justify-center rounded-full bg-[#2367EE] px-6 py-3 text-base font-semibold text-white v4-hero-glow v2-comic-border-light border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
+                  className="inline-flex items-center justify-center rounded-full bg-[#2367EE] px-8 py-3.5 text-lg font-semibold text-white v4-hero-glow v2-comic-border-light border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
                 >
                   Book a demo
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-full border-2 border-[#1D4871] bg-white px-6 py-3 text-base font-semibold text-[#1D4871] v2-comic-btn focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
-                >
-                  Learn more about Sayso
                 </a>
               </div>
             </div>

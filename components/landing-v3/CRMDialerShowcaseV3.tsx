@@ -366,7 +366,7 @@ function DialerHeader({ timerSeconds }: { timerSeconds: number }) {
   const formatted = `${mins}:${String(secs).padStart(2, '0')}`;
 
   return (
-    <div className="h-14 bg-[#1a2332] border-b border-white/10 flex items-center justify-between px-4 md:px-6 flex-shrink-0">
+    <div className="h-12 bg-[#1a2332] border-b border-white/10 flex items-center justify-between px-3 md:px-4 flex-shrink-0">
       {/* Left: App branding */}
       <div className="flex items-center gap-3">
         <div className="w-7 h-7 rounded-lg bg-[#2367EE] flex items-center justify-center">
@@ -377,14 +377,10 @@ function DialerHeader({ timerSeconds }: { timerSeconds: number }) {
         <span className="text-white text-sm font-semibold hidden sm:inline">Dialer</span>
       </div>
 
-      {/* Center: Call status */}
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/15 border border-green-500/30">
-          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-xs font-semibold text-green-300">Connected</span>
-        </div>
-        <div className="h-6 w-px bg-white/15" />
+      {/* Center: Call timer */}
+      <div className="flex items-center">
         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5">
+          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <span className="text-sm font-mono font-medium text-white">{formatted}</span>
         </div>
       </div>

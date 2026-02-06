@@ -18,7 +18,7 @@ function PricingCardV4({ plan }: { plan: PricingPlan }) {
       {plan.isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
           <span className="v2-pow-badge px-4 py-1.5 rounded-lg text-sm font-comic tracking-wider inline-block">
-            HERO&apos;S CHOICE
+            MOST POPULAR
           </span>
         </div>
       )}
@@ -117,7 +117,7 @@ export function PricingSectionV4() {
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-comic text-3xl md:text-4xl lg:text-5xl text-[#1D4871] mb-4 tracking-wide">
-            Choose Your Superpower.
+            Simple Pricing.
           </h2>
           <p className="text-base md:text-lg text-[#1D4871]/70 max-w-2xl mx-auto leading-relaxed">
             Start free. Upgrade when you&apos;re ready for consistency on every call.

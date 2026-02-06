@@ -199,12 +199,12 @@ export function DesktopDemoFrame({
 
   useEffect(() => {
     // Animation cycle is 14 seconds
-    // "Live prompting" highlight: show at 4s, hide at 8s
-    // "Works on existing dialer" highlight: show at 8s, hide at 14s (6 seconds of visibility)
+    // SaySo highlight: show at 3s, hide at 10s (7 seconds of visibility)
+    // "Works on existing dialer" highlight: show at 10s, hide at 14s (4 seconds of visibility)
     const CYCLE_DURATION = 14000;
-    const PROMPT_SHOW_DELAY = 4000;
-    const PROMPT_HIDE_DELAY = 8000;
-    const DIALER_SHOW_DELAY = 8000;
+    const PROMPT_SHOW_DELAY = 3000;
+    const PROMPT_HIDE_DELAY = 10000;
+    const DIALER_SHOW_DELAY = 10000;
 
     const runCycle = () => {
       // Show "Live prompting" highlight
@@ -281,7 +281,7 @@ export function DesktopDemoFrame({
 
         {/* SaySo widget — left side, vertically centered */}
         {desktopOverlay && (
-          <div className="absolute top-[22%] left-[3%] z-30" style={{ width: 'clamp(280px, 34%, 440px)' }}>
+          <div className="absolute top-[24%] left-[3%] z-30" style={{ width: 'clamp(280px, 34%, 440px)' }}>
             {/* Widget container with highlight border */}
             <div className="relative">
               {/* Highlight border box - fades in/out */}
@@ -349,25 +349,6 @@ export function DesktopDemoFrame({
         <MacOSDock />
       </div>
 
-      {/* Superhero pointing at SaySo widget — positioned outside desktop in the white space */}
-      {desktopOverlay && (
-        <div
-          className="absolute top-[20%] -left-[22%] z-40 pointer-events-none"
-          style={{
-            opacity: showHighlight ? 1 : 0,
-            transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-            transform: showHighlight ? 'scale(1) translateX(0)' : 'scale(0.6) translateX(30px)',
-          }}
-        >
-          <Image
-            src="/sayso_superhero_point_right.png"
-            alt="SaySo superhero"
-            width={300}
-            height={300}
-            className="w-[180px] h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
-          />
-        </div>
-      )}
     </div>
   );
 }

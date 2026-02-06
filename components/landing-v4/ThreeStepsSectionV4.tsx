@@ -256,7 +256,7 @@ export function ThreeStepsSectionV4() {
             <svg width="24" height="24" viewBox="0 0 512 512" fill="none" className="inline-block mr-2 -mt-1">
               <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="#2367EE" stroke="#2367EE" strokeWidth="20"/>
             </svg>
-            Your Hero Training in 3 Steps
+            Sayso in 3 Easy Steps
           </h2>
           <p className="text-base md:text-lg text-[#1D4871]/70 max-w-2xl mx-auto leading-relaxed">
             Real-time guidance that keeps outbound calls structured and moving toward a booked appointment.

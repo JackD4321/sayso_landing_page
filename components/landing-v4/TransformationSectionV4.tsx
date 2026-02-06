@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useDemoCalendar } from './DemoCalendarProvider';
 
 // Victory metric card icons
 function CalendarCheckIcon() {
@@ -101,6 +102,8 @@ function HeroStarburst() {
 }
 
 export function TransformationSectionV4() {
+  const { openDemoCalendar } = useDemoCalendar();
+
   return (
     <section className="relative bg-[#1D4871] py-16 md:py-20 lg:py-24 overflow-hidden v4-halftone-dark">
       {/* Diagonal yellow accent stripe at top */}
@@ -155,7 +158,7 @@ export function TransformationSectionV4() {
             </div>
 
             {/* Final CTA */}
-            <div className="mt-8 md:mt-10 text-center lg:text-left">
+            <div className="mt-8 md:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
               <a
                 href="#get-started"
                 className="inline-flex items-center justify-center rounded-full bg-[#FFDE59] px-7 py-3.5 text-base font-bold text-[#1D4871] v2-comic-btn border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDE59] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
@@ -165,6 +168,12 @@ export function TransformationSectionV4() {
                 </svg>
                 Get Started
               </a>
+              <button
+                onClick={openDemoCalendar}
+                className="inline-flex items-center justify-center rounded-full bg-transparent px-7 py-3.5 text-base font-bold text-white border-2 border-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
+              >
+                Book a Demo
+              </button>
             </div>
           </div>
         </div>

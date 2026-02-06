@@ -87,15 +87,15 @@ export function HeroWithVideoV4() {
             </div>
 
             {/* LEFT COLUMN — headline, tagline, CTAs */}
-            <div className="text-left lg:max-w-md flex-shrink-0">
-              <div className="mb-3 md:mb-4 lg:pl-4">
+            <div className="text-center lg:max-w-md flex-shrink-0 lg:pl-8">
+              <div className="mb-3 md:mb-4">
                 <h1 className="font-comic text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-wide leading-[1.05] text-[#1D4871] v4-slide-in-left">
                   Win the Moment
                 </h1>
               </div>
 
               {/* Tagline */}
-              <p className="mt-2 text-base md:text-lg lg:text-xl leading-relaxed text-[#1D4871]/80 max-w-lg">
+              <p className="mt-2 text-base md:text-lg lg:text-xl leading-relaxed text-[#1D4871]/80 max-w-lg mx-auto">
                 Guidance that shows up during the call—before the moment passes.
               </p>
 

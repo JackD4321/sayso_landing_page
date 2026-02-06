@@ -441,7 +441,7 @@ function DialerSplitView({
               <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#2367EE' }} />
               <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">You</span>
             </div>
-            <p className="text-sm font-bold text-[#1D4871]">Alex Walker</p>
+            <p className="text-sm font-bold text-[#1D4871]">Alex Agent</p>
             <p className="text-[11px] text-gray-500">SaySo Agent</p>
           </div>
         </div>

@@ -2,17 +2,19 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useDemoCalendar } from './DemoCalendarProvider';
 
 const NAV_LINKS = [
-  { label: 'How it works', href: '#how-it-works' },
-  { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Security', href: '#security' },
-  { label: 'Help', href: '#help' },
+  { label: 'Home', href: '#top' },
+  { label: 'How Sayso Works', href: '#how-it-works' },
+  { label: 'Demo', href: '#demo', isCalendar: true },
+  { label: 'Download', href: '#download', noop: true },
+  { label: 'Contact', href: '#contact', isContact: true },
 ];
 
 export default function SaysoNavbarV4() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { openDemoCalendar, openContactForm } = useDemoCalendar();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function SaysoNavbarV4() {
 
   return (
     <nav className="sticky top-4 z-50 flex justify-center px-4" aria-label="Main navigation">
-      <div className="relative w-full max-w-[1200px]">
+      <div ref={menuRef} className="relative w-full max-w-[1200px]">
         {/* Main Navbar — comic border style */}
         <div className="flex items-center justify-between h-14 md:h-16 px-4 md:px-6 rounded-full bg-white border-2 border-[#1D4871] v2-comic-shadow-sm">
           {/* Logo with superhero character */}
@@ -59,9 +61,15 @@ export default function SaysoNavbarV4() {
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {NAV_LINKS.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
-                className="text-[#1D4871] font-bold text-sm md:text-base hover:text-[#2367EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 py-1"
+                key={link.label}
+                href={link.noop || link.isCalendar || link.isContact ? undefined : link.href}
+                onClick={
+                  link.noop ? (e) => e.preventDefault()
+                  : link.isCalendar ? (e) => { e.preventDefault(); openDemoCalendar(); }
+                  : link.isContact ? (e) => { e.preventDefault(); openContactForm(); }
+                  : undefined
+                }
+                className="text-[#1D4871] font-bold text-sm md:text-base hover:text-[#2367EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 py-1 cursor-pointer"
               >
                 {link.label}
               </a>
@@ -98,16 +106,20 @@ export default function SaysoNavbarV4() {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div
-            ref={menuRef}
             className="absolute top-full left-0 right-0 mt-2 rounded-2xl bg-white border-2 border-[#1D4871] v2-comic-shadow overflow-hidden"
           >
             <div className="py-4 px-4 space-y-1">
               {NAV_LINKS.map((link) => (
                 <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg text-[#1D4871] font-bold text-base text-right hover:bg-[#FFDE59]/20 transition-colors"
+                  key={link.label}
+                  href={link.noop || link.isCalendar || link.isContact ? undefined : link.href}
+                  onClick={
+                    link.noop ? (e) => e.preventDefault()
+                    : link.isCalendar ? (e) => { e.preventDefault(); setIsMobileMenuOpen(false); openDemoCalendar(); }
+                    : link.isContact ? (e) => { e.preventDefault(); setIsMobileMenuOpen(false); openContactForm(); }
+                    : () => setIsMobileMenuOpen(false)
+                  }
+                  className="block px-4 py-3 rounded-lg text-[#1D4871] font-bold text-base text-right hover:bg-[#FFDE59]/20 transition-colors cursor-pointer"
                 >
                   {link.label}
                 </a>

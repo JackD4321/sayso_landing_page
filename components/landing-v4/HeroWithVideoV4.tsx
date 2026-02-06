@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ProductShowcaseDesktop } from '../landing-v3/ProductShowcaseDesktop';
+import { useDemoCalendar } from './DemoCalendarProvider';
 
 const logos = [
   { name: 'eXp Realty', src: '/exp realty.png', href: '/case-studies#exp-realty' },
@@ -12,6 +13,7 @@ const logos = [
 export function HeroWithVideoV4() {
   // Duplicate logos for seamless marquee scroll
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
+  const { openDemoCalendar } = useDemoCalendar();
 
   // Superhero visibility synced with DesktopDemoFrame highlight cycle (14s total)
   const [showSuperhero, setShowSuperhero] = useState(false);
@@ -101,12 +103,12 @@ export function HeroWithVideoV4() {
 
               {/* CTA */}
               <div className="mt-5 md:mt-6 flex justify-center">
-                <a
-                  href="#"
+                <button
+                  onClick={openDemoCalendar}
                   className="inline-flex items-center justify-center rounded-full bg-[#2367EE] px-8 py-3.5 text-lg font-semibold text-white v4-hero-glow v2-comic-border-light border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
                 >
                   Book a demo
-                </a>
+                </button>
               </div>
             </div>
 

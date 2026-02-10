@@ -103,7 +103,7 @@ function SoundEffectBadge({ text, color = '#FFDE59', rotate = 12, className = ''
 function PanelNumberBadge({ number }: { number: number }) {
   return (
     <div className="absolute -top-2 -left-2 z-20">
-      <span className="v2-pow-badge px-2 py-0.5 rounded text-[10px] font-comic tracking-wider">
+      <span className="v2-pow-badge px-2 py-0.5 rounded text-base font-comic tracking-wider">
         STEP {number}
       </span>
     </div>
@@ -200,10 +200,10 @@ function StepCard({ title, description, visual, tilt, number, soundEffect, sound
           {visual}
         </div>
       </div>
-      <h3 className="font-comic text-2xl md:text-3xl text-[#1D4871] mb-3 tracking-wide">
+      <h3 className="text-2xl md:text-3xl text-black mb-3 tracking-wide font-bold" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
         {title}
       </h3>
-      <p className="text-base text-[#1D4871]/70 max-w-sm leading-relaxed min-h-[60px]">
+      <p className="text-[1.1rem] text-[#1D4871]/70 max-w-sm leading-relaxed min-h-[60px]">
         {description}
       </p>
     </div>
@@ -258,7 +258,7 @@ export function ThreeStepsSectionV4() {
             </svg>
             Sayso in 3 Easy Steps
           </h2>
-          <p className="text-base md:text-lg text-[#1D4871]/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[1.2rem] text-[#1D4871]/70 max-w-2xl mx-auto leading-relaxed">
             Real-time guidance that keeps outbound calls structured and moving toward a booked appointment.
           </p>
         </div>

@@ -7,20 +7,20 @@ import { useEffect, useState, useCallback } from 'react';
 const CONVERSATION_CYCLES = [
   {
     buyerMessage: "I'm not sure if now is the right time to sell...",
-    sellerMessage: "What got you thinking about moving in the first place?",
+    sellerMessage: "Totally normal to be unsure right now. What got you thinking about moving initially?",
     saysoPrompt: "It's understandable to be unsure right now. What got you thinking about moving, and what do you hope that change would bring you?",
     promptSource: 'Objection handling playbook',
   },
   {
     buyerMessage: "We're thinking about Santa Monica for the schools.",
-    sellerMessage: "What matters most about the neighborhood for you?",
+    sellerMessage: "Santa Monica is great. What part of Santa Monica are you considering?",
     saysoPrompt: "It's great you're considering Santa Monica! What's most important to you about the location or neighborhood there?",
     promptSource: 'Top performer pattern',
   },
   {
     buyerMessage: "Our current agent charges really high fees...",
-    sellerMessage: "What does good value look like to you in an agent?",
-    saysoPrompt: "Walk me through what good value looks like to you in an agent relationship.",
+    sellerMessage: "What would make you happier in your experience with a new agent?",
+    saysoPrompt: "Sorry, your last experience wasn't exceptional. Can you walk me through what would make you happy with the experience with a new agent?",
     promptSource: 'Past call with Sarah Chen',
   },
 ];
@@ -370,8 +370,8 @@ function DialerHeader({ timerSeconds }: { timerSeconds: number }) {
       {/* Left: App branding */}
       <div className="flex items-center gap-3">
         <div className="w-7 h-7 rounded-lg bg-[#2367EE] flex items-center justify-center">
-          <svg width="16" height="16" viewBox="0 0 512 512" fill="none">
-            <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="white" stroke="white" strokeWidth="38.4" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
         </div>
         <span className="text-white text-sm font-semibold hidden sm:inline">Dialer</span>
@@ -476,7 +476,7 @@ function DialerSplitView({
               <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#F59E0B' }} />
               <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Buyer</span>
             </div>
-            <p className="text-sm font-bold text-[#1D4871]">Jane Smith</p>
+            <p className="text-sm font-bold text-[#1D4871]">Mrs. Smith</p>
             <p className="text-[11px] text-gray-500">(310) 488-1179</p>
           </div>
         </div>
@@ -572,7 +572,7 @@ function useDialerState() {
   const [sellerSpeaking, setSellerSpeaking] = useState(false);
   const [timerSeconds, setTimerSeconds] = useState(29);
 
-  const CYCLE_DURATION = 12000;
+  const CYCLE_DURATION = 11000;
 
   // Timer
   useEffect(() => {
@@ -590,26 +590,26 @@ function useDialerState() {
     setBuyerSpeaking(false);
     setSellerSpeaking(false);
 
-    // 0.5s: Buyer starts speaking
-    setTimeout(() => setBuyerSpeaking(true), 500);
+    // 0.3s: Buyer starts speaking
+    setTimeout(() => setBuyerSpeaking(true), 300);
 
-    // 1.2s: Buyer speech bubble appears
-    setTimeout(() => setShowBuyerMessage(true), 1200);
+    // 0.8s: Buyer speech bubble appears
+    setTimeout(() => setShowBuyerMessage(true), 800);
 
-    // 3.5s: Buyer stops speaking
-    setTimeout(() => setBuyerSpeaking(false), 3500);
+    // 3.2s: Buyer stops speaking
+    setTimeout(() => setBuyerSpeaking(false), 3200);
 
-    // 4.0s: SaySo prompt appears for seller
-    setTimeout(() => setShowPrompt(true), 4000);
+    // 3.5s: SaySo prompt appears (0.3s after buyer stops)
+    setTimeout(() => setShowPrompt(true), 3500);
 
-    // 6.0s: Seller starts speaking
-    setTimeout(() => setSellerSpeaking(true), 6000);
+    // 5.5s: Seller starts speaking (2s to read prompt)
+    setTimeout(() => setSellerSpeaking(true), 5500);
 
-    // 6.5s: Seller speech bubble appears
-    setTimeout(() => setShowSellerMessage(true), 6500);
+    // 6.0s: Seller speech bubble appears
+    setTimeout(() => setShowSellerMessage(true), 6000);
 
-    // 9.5s: Seller stops speaking
-    setTimeout(() => setSellerSpeaking(false), 9500);
+    // 8.5s: Seller stops speaking
+    setTimeout(() => setSellerSpeaking(false), 8500);
   }, []);
 
   // Cycle management

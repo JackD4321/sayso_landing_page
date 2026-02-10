@@ -55,14 +55,14 @@ const metrics = [
   },
   {
     icon: <RevenueIcon />,
-    title: 'Revenue Growth',
-    description: 'Higher-quality conversations close faster',
+    title: 'Live Coaching',
+    description: 'Higher quality conversations create higher quality appointments',
     tilt: 'v2-tilt-right',
   },
   {
     icon: <RocketIcon />,
-    title: 'Week 1 Ready',
-    description: 'Start coaching from your first call',
+    title: 'Set up in minutes',
+    description: 'Works in any CRM or dialer',
     tilt: 'v2-tilt-left',
   },
   {
@@ -136,7 +136,7 @@ export function TransformationSectionV4() {
               With SaySo, You&apos;re Unstoppable
             </h2>
             <p className="text-base md:text-lg text-white/70 mb-8 md:mb-10 text-center lg:text-left max-w-xl">
-              Transform every outbound call into a winning conversation.
+              Transform every prospecting call into a winning conversation.
             </p>
 
             {/* Victory metric cards grid */}
@@ -166,7 +166,7 @@ export function TransformationSectionV4() {
                 <svg width="18" height="18" viewBox="0 0 512 512" fill="none" className="mr-2">
                   <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="#1D4871" stroke="#1D4871" strokeWidth="20"/>
                 </svg>
-                Get Started
+                Activate Sayso
               </a>
               <button
                 onClick={openDemoCalendar}

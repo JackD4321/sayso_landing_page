@@ -7,9 +7,8 @@ import { useDemoCalendar } from './DemoCalendarProvider';
 const NAV_LINKS = [
   { label: 'Home', href: '#top' },
   { label: 'How Sayso Works', href: '#how-it-works' },
-  { label: 'Case Study', href: '/case-studies' },
+  { label: 'Case Studies', href: '/case-studies' },
   { label: 'Demo', href: '#demo', isCalendar: true },
-  { label: 'Download', href: '#download', noop: true },
   { label: 'Contact', href: '#contact', isContact: true },
 ];
 
@@ -48,7 +47,7 @@ export default function SaysoNavbarV4() {
     <nav className="sticky top-4 z-50 flex justify-center px-4" aria-label="Main navigation">
       <div ref={menuRef} className="relative w-full max-w-[1200px]">
         {/* Main Navbar — comic border style */}
-        <div className="flex items-center justify-between h-14 md:h-16 px-4 md:px-6 rounded-full bg-white border-2 border-[#1D4871] v2-comic-shadow-sm">
+        <div className="flex items-center justify-between h-14 md:h-18 px-4 md:px-6 rounded-full bg-white border-2 border-[#1D4871] v2-comic-shadow-sm">
           {/* Logo with superhero character */}
           <a
             href="/v4"
@@ -63,14 +62,13 @@ export default function SaysoNavbarV4() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
-                href={link.noop || link.isCalendar || link.isContact ? undefined : link.href}
+                href={link.isCalendar || link.isContact ? undefined : link.href}
                 onClick={
-                  link.noop ? (e) => e.preventDefault()
-                  : link.isCalendar ? (e) => { e.preventDefault(); openDemoCalendar(); }
+                  link.isCalendar ? (e) => { e.preventDefault(); openDemoCalendar(); }
                   : link.isContact ? (e) => { e.preventDefault(); openContactForm(); }
                   : undefined
                 }
-                className="text-[#1D4871] font-bold text-sm md:text-base hover:text-[#2367EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 py-1 cursor-pointer"
+                className="text-[#1D4871] font-bold text-sm md:text-[1.1rem] hover:text-[#2367EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 py-1 cursor-pointer"
               >
                 {link.label}
               </a>
@@ -86,7 +84,7 @@ export default function SaysoNavbarV4() {
               <svg width="14" height="14" viewBox="0 0 512 512" fill="none" className="mr-1.5">
                 <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="currentColor" stroke="currentColor" strokeWidth="20"/>
               </svg>
-              Get Started
+              Activate Sayso
             </a>
 
             <button
@@ -113,10 +111,9 @@ export default function SaysoNavbarV4() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
-                  href={link.noop || link.isCalendar || link.isContact ? undefined : link.href}
+                  href={link.isCalendar || link.isContact ? undefined : link.href}
                   onClick={
-                    link.noop ? (e) => e.preventDefault()
-                    : link.isCalendar ? (e) => { e.preventDefault(); setIsMobileMenuOpen(false); openDemoCalendar(); }
+                    link.isCalendar ? (e) => { e.preventDefault(); setIsMobileMenuOpen(false); openDemoCalendar(); }
                     : link.isContact ? (e) => { e.preventDefault(); setIsMobileMenuOpen(false); openContactForm(); }
                     : () => setIsMobileMenuOpen(false)
                   }
@@ -130,7 +127,7 @@ export default function SaysoNavbarV4() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full mt-3 px-4 py-3 rounded-full bg-[#2367EE] text-white font-bold text-base text-center v2-comic-btn border-2 border-[#1D4871]"
               >
-                Get Started
+                Activate Sayso
               </a>
             </div>
           </div>

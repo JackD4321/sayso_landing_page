@@ -37,7 +37,7 @@ export function HeroWithVideoV4() {
         }
       `}</style>
 
-      <section className="relative bg-white pt-16 pb-4 md:pt-20 md:pb-6 lg:pt-24 lg:pb-8 overflow-hidden v2-halftone">
+      <section className="relative bg-white pt-[100px] pb-[100px] overflow-hidden v2-halftone">
         <div className="max-w-[1600px] mx-auto px-6">
 
           {/* Two-column layout: text left, video far right */}
@@ -66,16 +66,22 @@ export function HeroWithVideoV4() {
 
               {/* Tagline */}
               <p className="mt-2 text-base md:text-lg lg:text-xl leading-relaxed text-[#1D4871]/80 max-w-lg mx-auto">
-                Guidance that shows up during the call—before the moment passes.
+                Real-time prompts to help agents handle objections, ask better questions, and book more appointments.
               </p>
 
               {/* CTA */}
-              <div className="mt-5 md:mt-6 flex justify-center">
+              <div className="mt-5 md:mt-6 flex justify-center gap-4">
                 <button
                   onClick={openDemoCalendar}
                   className="inline-flex items-center justify-center rounded-full bg-[#2367EE] px-8 py-3.5 text-lg font-semibold text-white v4-hero-glow v2-comic-border-light border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
                 >
                   Book a demo
+                </button>
+                <button
+                  onClick={openDemoCalendar}
+                  className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-lg font-semibold text-[#1D4871] v2-comic-border-light border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
+                >
+                  Activate Sayso
                 </button>
               </div>
             </div>
@@ -115,7 +121,7 @@ export function HeroWithVideoV4() {
             {/* Label */}
             <div className="flex justify-center mb-5">
               <div className="bg-[#1D4871] text-white px-5 py-2 rounded-lg v2-comic-shadow-sm transform -rotate-1 inline-block">
-                <span className="font-comic text-sm md:text-base tracking-wide">Trusted by Teams Running Outbound Every Day</span>
+                <span className="font-comic text-sm md:text-base tracking-wide">Trusted by Top Teams and Agents Nationwide</span>
               </div>
             </div>
 

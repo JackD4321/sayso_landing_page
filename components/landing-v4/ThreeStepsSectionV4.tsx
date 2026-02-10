@@ -203,7 +203,7 @@ function StepCard({ title, description, visual, tilt, number, soundEffect, sound
       <h3 className="font-comic text-2xl md:text-3xl text-[#1D4871] mb-3 tracking-wide">
         {title}
       </h3>
-      <p className="text-base text-[#1D4871]/70 max-w-sm leading-relaxed">
+      <p className="text-base text-[#1D4871]/70 max-w-sm leading-relaxed min-h-[60px]">
         {description}
       </p>
     </div>
@@ -215,7 +215,7 @@ export function ThreeStepsSectionV4() {
     {
       number: 1,
       title: '1. Launch Coach',
-      description: 'Turn it on before your outbound calls to get live guidance during the conversation.',
+      description: 'Turn SaySo on while you\'re calling to get live coaching and guidance during the call.',
       visual: <StepVisualStartSayso />,
       tilt: 'v2-tilt-left',
       soundEffect: 'CLICK!',
@@ -226,7 +226,7 @@ export function ThreeStepsSectionV4() {
     {
       number: 2,
       title: '2. Get real-time prompts',
-      description: 'When the call drifts or a prospect throws something unexpected, Sayso suggests what to ask or say next.',
+      description: 'Sayso suggests what to ask or say next.',
       visual: <StepVisualPrompts />,
       tilt: '',
       soundEffect: 'ZAP!',
@@ -237,7 +237,7 @@ export function ThreeStepsSectionV4() {
     {
       number: 3,
       title: '3. Win the moment',
-      description: 'Sayso helps you earn the meeting at the right moment—so appointments are more qualified and more likely to happen.',
+      description: 'Sayso helps you earn the meeting at the right moment—so appointments are more qualified and more likely to convert.',
       visual: <StepVisualBooked />,
       tilt: 'v2-tilt-right',
       soundEffect: 'BOOM!',

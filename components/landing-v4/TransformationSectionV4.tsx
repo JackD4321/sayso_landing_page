@@ -147,10 +147,10 @@ export function TransformationSectionV4() {
                   className={`bg-white rounded-xl v2-comic-border v2-comic-shadow p-4 md:p-5 ${metric.tilt}`}
                 >
                   <div className="mb-2">{metric.icon}</div>
-                  <h3 className="font-comic text-lg md:text-xl text-[#1D4871] tracking-wide mb-1">
+                  <h3 className="font-comic text-xl md:text-2xl text-black tracking-wide mb-1">
                     {metric.title}
                   </h3>
-                  <p className="text-sm text-[#1D4871]/70 leading-relaxed">
+                  <p className="text-base text-[#1D4871]/70 leading-relaxed">
                     {metric.description}
                   </p>
                 </div>
@@ -161,7 +161,7 @@ export function TransformationSectionV4() {
             <div className="mt-8 md:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
               <a
                 href="#get-started"
-                className="inline-flex items-center justify-center rounded-full bg-[#FFDE59] px-7 py-3.5 text-base font-bold text-[#1D4871] v2-comic-btn border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDE59] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
+                className="inline-flex items-center justify-center rounded-full bg-[#FFDE59] px-7 py-3.5 text-[1.1rem] font-bold text-[#1D4871] v2-comic-btn border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDE59] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
               >
                 <svg width="18" height="18" viewBox="0 0 512 512" fill="none" className="mr-2">
                   <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="#1D4871" stroke="#1D4871" strokeWidth="20"/>
@@ -170,7 +170,7 @@ export function TransformationSectionV4() {
               </a>
               <button
                 onClick={openDemoCalendar}
-                className="inline-flex items-center justify-center rounded-full bg-transparent px-7 py-3.5 text-base font-bold text-white border-2 border-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
+                className="inline-flex items-center justify-center rounded-full bg-transparent px-7 py-3.5 text-[1.1rem] font-bold text-white border-2 border-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
               >
                 Book a Demo
               </button>

@@ -120,9 +120,7 @@ export function HeroWithVideoV4() {
           <div className="mt-12 md:mt-16 pt-4 md:pt-6">
             {/* Label */}
             <div className="flex justify-center mb-5">
-              <div className="bg-[#1D4871] text-white px-5 py-2 rounded-lg v2-comic-shadow-sm transform -rotate-1 inline-block">
-                <span className="font-comic text-sm md:text-base tracking-wide">Trusted by Top Teams and Agents Nationwide</span>
-              </div>
+              <span className="text-sm md:text-base font-bold tracking-widest uppercase text-black" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>Trusted by Top Teams and Agents Nationwide</span>
             </div>
 
             {/* Marquee */}

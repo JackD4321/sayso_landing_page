@@ -37,7 +37,7 @@ export function HeroWithVideoV4() {
         }
       `}</style>
 
-      <section className="relative bg-white pt-[100px] pb-[100px] overflow-hidden v2-halftone">
+      <section className="relative bg-white pt-[140px] pb-[140px] overflow-hidden v2-halftone">
         <div className="max-w-[1600px] mx-auto px-6">
 
           {/* Two-column layout: text left, video far right */}
@@ -117,7 +117,7 @@ export function HeroWithVideoV4() {
           </div>
 
           {/* SOCIAL PROOF — full width below the grid */}
-          <div className="mt-6 md:mt-8 pt-4 md:pt-6">
+          <div className="mt-12 md:mt-16 pt-4 md:pt-6">
             {/* Label */}
             <div className="flex justify-center mb-5">
               <div className="bg-[#1D4871] text-white px-5 py-2 rounded-lg v2-comic-shadow-sm transform -rotate-1 inline-block">

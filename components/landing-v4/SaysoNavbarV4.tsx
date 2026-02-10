@@ -47,7 +47,7 @@ export default function SaysoNavbarV4() {
     <nav className="sticky top-4 z-50 flex justify-center px-4" aria-label="Main navigation">
       <div ref={menuRef} className="relative w-full max-w-[1200px]">
         {/* Main Navbar — comic border style */}
-        <div className="flex items-center justify-between h-14 md:h-18 px-4 md:px-6 rounded-full bg-white border-2 border-[#1D4871] v2-comic-shadow-sm">
+        <div className="flex items-center justify-between h-14 md:h-[4.5rem] px-4 md:px-6 rounded-full bg-white border-2 border-[#1D4871] v2-comic-shadow-sm">
           {/* Logo with superhero character */}
           <a
             href="/v4"
@@ -68,7 +68,7 @@ export default function SaysoNavbarV4() {
                   : link.isContact ? (e) => { e.preventDefault(); openContactForm(); }
                   : undefined
                 }
-                className="text-[#1D4871] font-bold text-sm md:text-[1.1rem] hover:text-[#2367EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 py-1 cursor-pointer"
+                className="text-[#1D4871] font-bold text-sm md:text-[1.2rem] hover:text-[#2367EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2 rounded-lg px-2 py-1 cursor-pointer"
               >
                 {link.label}
               </a>

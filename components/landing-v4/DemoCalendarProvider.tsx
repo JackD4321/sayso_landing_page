@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback } from 'react';
+import { OnboardingModal } from '../onboarding/OnboardingModal';
 
 const DEMO_CALENDAR_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0eeiee8mED3XOLfAhzApvxOvHL96hIK8pNfAcZBY89TaKTa_LeVrtJr_kEbOlbQyb1juvLNPG3?gv=true';
 const CONTACT_FORM_URL = 'https://alert-tartan-008.notion.site/ebd/2f04de400468813784b3cd2d7a1290af';
@@ -8,9 +9,11 @@ const CONTACT_FORM_URL = 'https://alert-tartan-008.notion.site/ebd/2f04de4004688
 const DemoCalendarContext = createContext<{
   openDemoCalendar: () => void;
   openContactForm: () => void;
+  openOnboarding: () => void;
 }>({
   openDemoCalendar: () => {},
   openContactForm: () => {},
+  openOnboarding: () => {},
 });
 
 export function useDemoCalendar() {
@@ -20,11 +23,13 @@ export function useDemoCalendar() {
 export function DemoCalendarProvider({ children }: { children: React.ReactNode }) {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const openDemoCalendar = useCallback(() => setIsCalendarOpen(true), []);
   const openContactForm = useCallback(() => setIsContactOpen(true), []);
+  const openOnboarding = useCallback(() => setIsOnboardingOpen(true), []);
 
   return (
-    <DemoCalendarContext.Provider value={{ openDemoCalendar, openContactForm }}>
+    <DemoCalendarContext.Provider value={{ openDemoCalendar, openContactForm, openOnboarding }}>
       {children}
 
       {/* Shared Calendar Popup Modal */}
@@ -77,6 +82,11 @@ export function DemoCalendarProvider({ children }: { children: React.ReactNode }
             />
           </div>
         </div>
+      )}
+
+      {/* Onboarding Flow Modal */}
+      {isOnboardingOpen && (
+        <OnboardingModal onClose={() => setIsOnboardingOpen(false)} />
       )}
     </DemoCalendarContext.Provider>
   );

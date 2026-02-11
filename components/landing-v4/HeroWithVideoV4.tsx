@@ -12,7 +12,7 @@ const logos = [
 export function HeroWithVideoV4() {
   // Duplicate logos for seamless marquee scroll
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
-  const { openDemoCalendar } = useDemoCalendar();
+  const { openDemoCalendar, openOnboarding } = useDemoCalendar();
 
   return (
     <>
@@ -78,7 +78,7 @@ export function HeroWithVideoV4() {
                   Book a demo
                 </button>
                 <button
-                  onClick={openDemoCalendar}
+                  onClick={openOnboarding}
                   className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-lg font-semibold text-[#1D4871] v2-comic-border-light border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
                 >
                   Activate Sayso

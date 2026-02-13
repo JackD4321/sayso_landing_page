@@ -10,7 +10,8 @@
       "Bash(ls:*)",
       "Bash(npx next build:*)",
       "Bash(xargs -I {} sh -c 'echo \"\"=== {} ===\"\" && head -5 {}')",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npm info:*)"
     ]
   }
 }

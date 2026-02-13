@@ -4,7 +4,6 @@ import { BlogHeroBanner } from '@/components/blog/BlogHeroBanner';
 import { BlogCategoryPills } from '@/components/blog/BlogCategoryPills';
 import { BlogPostCard } from '@/components/blog/BlogPostCard';
 import { BlogNewsletterCTA } from '@/components/blog/BlogNewsletterCTA';
-import { BlogBreadcrumb } from '@/components/blog/BlogBreadcrumb';
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -31,13 +30,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <>
-      <BlogBreadcrumb
-        items={[
-          { label: 'Blog', href: '/blog' },
-          { label: categoryName },
-        ]}
-      />
-
       <BlogHeroBanner
         title={categoryName}
         subtitle={`Explore our articles about ${categoryName.toLowerCase()}.`}

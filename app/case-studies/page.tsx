@@ -1,13 +1,16 @@
-import SaysoNavbarV3 from '@/components/landing-v3/SaysoNavbarV3';
-import { FooterV3 } from '@/components/landing-v3/FooterV3';
+import SaysoNavbarV4 from '@/components/landing-v4/SaysoNavbarV4';
+import { FooterV4 } from '@/components/landing-v4/FooterV4';
 import { CaseStudiesPage } from '@/components/landing-v3/CaseStudiesPage';
+import { DemoCalendarProvider } from '@/components/landing-v4/DemoCalendarProvider';
 
 export default function CaseStudies() {
   return (
-    <div className="relative">
-      <SaysoNavbarV3 />
-      <CaseStudiesPage />
-      <FooterV3 />
-    </div>
+    <DemoCalendarProvider>
+      <div className="relative bg-white">
+        <SaysoNavbarV4 />
+        <CaseStudiesPage />
+        <FooterV4 />
+      </div>
+    </DemoCalendarProvider>
   );
 }

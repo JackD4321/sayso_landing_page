@@ -17,12 +17,12 @@ const CONVERSATION_CYCLES = [
     saysoPrompt: "It's great you're considering Santa Monica! What's most important to you about the location or neighborhood there?",
     promptSource: 'Top performer pattern',
   },
-  {
-    buyerMessage: "Our current agent charges really high fees...",
-    sellerMessage: "What would make you happier in your experience with a new agent?",
-    saysoPrompt: "Sorry, your last experience wasn't exceptional. Can you walk me through what would make you happy with the experience with a new agent?",
-    promptSource: 'Past call with Sarah Chen',
-  },
+  // {
+  //   buyerMessage: "Our current agent charges really high fees...",
+  //   sellerMessage: "What would make you happier in your experience with a new agent?",
+  //   saysoPrompt: "Sorry, your last experience wasn't exceptional. Can you walk me through what would make you happy with the experience with a new agent?",
+  //   promptSource: 'Past call with Sarah Chen',
+  // },
 ];
 
 // === Audio Waveform Bars ===
@@ -231,10 +231,6 @@ export function SaysoWidget({
   useEffect(() => {
     if (showPrompt) {
       setVisibleMessages([0]);
-      const timer = setTimeout(() => {
-        setVisibleMessages([0, 1]);
-      }, 1500);
-      return () => clearTimeout(timer);
     } else {
       setVisibleMessages([]);
     }
@@ -327,27 +323,6 @@ export function SaysoWidget({
               >
                 <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '15px', lineHeight: '1.5', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
                   {CONVERSATION_CYCLES[currentCycle].saysoPrompt}
-                </p>
-              </div>
-            </div>
-          )}
-          {visibleMessages.includes(1) && (
-            <div style={{ animation: 'slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-              <div
-                className="flex items-center"
-                style={{
-                  borderRadius: '14px',
-                  minHeight: '48px',
-                  padding: '12px 16px',
-                  border: '0.5px solid rgba(255, 255, 255, 0.06)',
-                  background: 'rgba(255, 255, 255, 0.04)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.02)',
-                }}
-              >
-                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '15px', lineHeight: '1.5', fontWeight: 500, letterSpacing: '-0.01em', margin: 0 }}>
-                  {CONVERSATION_CYCLES[(currentCycle + 1) % CONVERSATION_CYCLES.length].saysoPrompt}
                 </p>
               </div>
             </div>

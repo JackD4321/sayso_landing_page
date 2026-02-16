@@ -36,7 +36,7 @@ export function CannyBoard({ user, basePath = '/feedback', boardToken }: CannyBo
 
     // Dynamically load the Canny SDK script
     const script = document.createElement('script');
-    script.src = 'https://canny.io/sdk.js';
+    script.src = 'https://sdk.canny.io/sdk.js';
     script.async = true;
 
     script.onload = () => {

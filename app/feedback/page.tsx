@@ -200,14 +200,14 @@ export default function FeedbackPage() {
                 {activeTab === 'bugs' && (
                   <CannyBoard
                     user={user}
-                    basePath="/feedback/bugs"
+                    basePath="/feedback"
                     boardToken={process.env.NEXT_PUBLIC_CANNY_BUGS_TOKEN || ''}
                   />
                 )}
                 {activeTab === 'roadmap' && (
                   <CannyBoard
                     user={user}
-                    basePath="/feedback/roadmap"
+                    basePath="/feedback"
                     boardToken={process.env.NEXT_PUBLIC_CANNY_ROADMAP_TOKEN || ''}
                   />
                 )}

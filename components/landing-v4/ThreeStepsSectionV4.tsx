@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 // Inline SVG Icons (same as v3)
 const GridIcon = () => (
   <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -211,6 +213,8 @@ function StepCard({ title, description, visual, tilt, number, soundEffect, sound
 }
 
 export function ThreeStepsSectionV4() {
+  const [currentStep, setCurrentStep] = useState(0);
+
   const steps = [
     {
       number: 1,
@@ -247,6 +251,8 @@ export function ThreeStepsSectionV4() {
     },
   ];
 
+  const step = steps[currentStep];
+
   return (
     <section id="how-it-works" className="mt-16 md:mt-20 lg:mt-24 bg-white py-12 md:py-16 lg:py-20 v2-halftone relative">
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
@@ -263,20 +269,68 @@ export function ThreeStepsSectionV4() {
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-4 lg:gap-8">
-          {steps.map((step, index) => (
-            <div key={step.number} className="flex items-center gap-4 lg:gap-6">
+        {/* Mobile: carousel — hidden on md+ */}
+        <div className="md:hidden flex flex-col items-center">
+          <StepCard
+            key={step.number}
+            number={step.number}
+            title={step.title}
+            description={step.description}
+            visual={step.visual}
+            tilt={step.tilt}
+            soundEffect={step.soundEffect}
+            soundColor={step.soundColor}
+            soundRotate={step.soundRotate}
+            soundPosition={step.soundPosition}
+          />
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <button
+              onClick={() => setCurrentStep(s => Math.max(0, s - 1))}
+              disabled={currentStep === 0}
+              aria-label="Previous step"
+              className="w-9 h-9 rounded-full border-2 border-[#1D4871] bg-white flex items-center justify-center disabled:opacity-30 transition-opacity"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 12L6 8l4-4" stroke="#1D4871" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <div className="flex gap-2">
+              {steps.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentStep(i)}
+                  aria-label={`Step ${i + 1}`}
+                  className={`w-2 h-2 rounded-full transition-colors ${i === currentStep ? 'bg-[#1D4871]' : 'bg-[#1D4871]/30'}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => setCurrentStep(s => Math.min(steps.length - 1, s + 1))}
+              disabled={currentStep === steps.length - 1}
+              aria-label="Next step"
+              className="w-9 h-9 rounded-full border-2 border-[#1D4871] bg-white flex items-center justify-center disabled:opacity-30 transition-opacity"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 4l4 4-4 4" stroke="#1D4871" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop: all three steps side by side — unchanged */}
+        <div className="hidden md:flex flex-row items-center md:items-start justify-center gap-8 md:gap-4 lg:gap-8">
+          {steps.map((s, index) => (
+            <div key={s.number} className="flex items-center gap-4 lg:gap-6">
               <StepCard
-                number={step.number}
-                title={step.title}
-                description={step.description}
-                visual={step.visual}
-                tilt={step.tilt}
-                soundEffect={step.soundEffect}
-                soundColor={step.soundColor}
-                soundRotate={step.soundRotate}
-                soundPosition={step.soundPosition}
+                number={s.number}
+                title={s.title}
+                description={s.description}
+                visual={s.visual}
+                tilt={s.tilt}
+                soundEffect={s.soundEffect}
+                soundColor={s.soundColor}
+                soundRotate={s.soundRotate}
+                soundPosition={s.soundPosition}
               />
               {index < steps.length - 1 && (
                 <div className="hidden md:flex items-center self-start mt-[25%]">

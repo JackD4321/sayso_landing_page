@@ -11,32 +11,10 @@ const logos = [
 ];
 
 export function HeroWithVideoV4() {
-  // Duplicate logos for seamless marquee scroll
-  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
   const { openDemoCalendar } = useDemoCalendar();
 
   return (
     <>
-      <style>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .marquee-track-hero {
-          animation: marquee 18s linear infinite;
-        }
-        .marquee-track-hero:hover {
-          animation-play-state: paused;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .marquee-track-hero {
-            animation: none;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-          }
-        }
-      `}</style>
 
       <section className="relative bg-white pt-[140px] pb-[140px] overflow-hidden v2-halftone">
         <div className="max-w-[1600px] mx-auto px-6">
@@ -118,26 +96,32 @@ export function HeroWithVideoV4() {
               <span className="text-sm md:text-base font-bold tracking-widest uppercase text-black" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>Trusted by Top Teams and Agents Nationwide</span>
             </div>
 
-            {/* Marquee */}
-            <div className="relative overflow-hidden">
-              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
-              <div className="marquee-track-hero flex items-center gap-10 md:gap-14 w-max">
-                {duplicatedLogos.map((logo, index) => (
-                  <div
-                    key={`marquee-${index}`}
-                    className="inline-flex items-center"
-                  >
-                    <Image
-                      src={logo.src}
-                      alt={logo.name}
-                      width={200}
-                      height={80}
-                      className="h-16 md:h-20 w-auto object-contain"
-                    />
-                  </div>
-                ))}
+            {/* Fixed logos — three equal columns */}
+            <div className="flex items-center justify-center gap-10 md:gap-20">
+              {logos.map((logo) => (
+                <div key={logo.name} className="flex flex-1 items-center justify-center max-w-[180px] md:max-w-[260px]">
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    width={260}
+                    height={100}
+                    className="h-16 md:h-24 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Case studies badge */}
+            <div className="flex justify-center mt-8 md:mt-10">
+              <div
+                className="inline-flex items-center gap-2 bg-[#FFDE59] border-[2.5px] border-[#1D4871] px-5 py-2.5 rounded-lg transform -rotate-1"
+                style={{ boxShadow: '3px 3px 0px #1D4871' }}
+              >
+                <span className="text-lg" aria-hidden="true">📋</span>
+                <span className="font-comic text-[#1D4871] text-base md:text-lg tracking-wide whitespace-nowrap">
+                  Case Studies Coming Soon
+                </span>
               </div>
-              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
             </div>
           </div>
 

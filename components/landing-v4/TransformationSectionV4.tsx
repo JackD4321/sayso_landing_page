@@ -51,25 +51,21 @@ const metrics = [
     icon: <CalendarCheckIcon />,
     title: 'More Appointments',
     description: 'Book meetings at the right moment',
-    tilt: 'v2-tilt-left',
   },
   {
     icon: <RevenueIcon />,
     title: 'Real Time Assistance',
     description: 'Higher quality conversations create higher quality appointments',
-    tilt: 'v2-tilt-right',
   },
   {
     icon: <RocketIcon />,
     title: 'Set up in minutes',
     description: 'Works in any CRM or dialer',
-    tilt: 'v2-tilt-left',
   },
   {
     icon: <ShieldIcon />,
     title: 'Always-On Guidance',
     description: 'Real-time support on every call',
-    tilt: 'v2-tilt-right',
   },
 ];
 
@@ -105,7 +101,7 @@ export function TransformationSectionV4() {
   const { openDemoCalendar, openOnboarding } = useDemoCalendar();
 
   return (
-    <section className="relative bg-[#1D4871] py-16 md:py-20 lg:py-24 overflow-hidden v4-halftone-dark">
+    <section className="relative bg-[#1D4871] py-10 md:py-20 lg:py-24 overflow-hidden v4-halftone-dark">
       {/* Diagonal yellow accent stripe at top */}
       <div
         className="absolute top-0 left-0 right-0 h-3 md:h-4 bg-[#FFDE59]"
@@ -135,7 +131,7 @@ export function TransformationSectionV4() {
             <h2 className="font-comic text-3xl md:text-4xl lg:text-5xl text-white mb-3 tracking-wide text-center lg:text-left">
               With SaySo, You&apos;re Unstoppable
             </h2>
-            <p className="text-base md:text-lg text-white/70 mb-8 md:mb-10 text-center lg:text-left max-w-xl">
+            <p className="text-base md:text-lg text-white/70 mb-5 md:mb-10 text-center lg:text-left max-w-xl">
               Transform every prospecting call into a winning conversation.
             </p>
 
@@ -144,7 +140,7 @@ export function TransformationSectionV4() {
               {metrics.map((metric, index) => (
                 <div
                   key={index}
-                  className={`bg-white rounded-xl v2-comic-border v2-comic-shadow p-4 md:p-5 ${metric.tilt}`}
+                  className="bg-white rounded-xl v2-comic-border v2-comic-shadow p-3 md:p-5"
                 >
                   <div className="mb-2">{metric.icon}</div>
                   <h3 className="font-comic text-xl md:text-2xl text-black tracking-wide mb-1">
@@ -158,7 +154,7 @@ export function TransformationSectionV4() {
             </div>
 
             {/* Final CTA */}
-            <div className="mt-8 md:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
+            <div className="mt-5 md:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
               <button
                 onClick={openDemoCalendar}
                 className="inline-flex items-center justify-center rounded-full bg-[#FFDE59] px-7 py-3.5 text-[1.1rem] font-bold text-[#1D4871] v2-comic-btn border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDE59] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"

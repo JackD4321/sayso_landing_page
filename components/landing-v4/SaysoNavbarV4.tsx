@@ -7,15 +7,15 @@ import { useDemoCalendar } from './DemoCalendarProvider';
 const NAV_LINKS = [
   { label: 'Home', href: '#top' },
   { label: 'How Sayso Works', href: '#how-it-works' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Case Studies', href: '/case-studies' },
+  // { label: 'Blog', href: '/blog' },
+  // { label: 'Case Studies', href: '/case-studies' },
   { label: 'Demo', href: '#demo', isCalendar: true },
   { label: 'Contact', href: '#contact', isContact: true },
 ];
 
 export default function SaysoNavbarV4() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { openDemoCalendar, openContactForm, openOnboarding } = useDemoCalendar();
+  const { openDemoCalendar, openContactForm } = useDemoCalendar();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -79,13 +79,13 @@ export default function SaysoNavbarV4() {
           {/* Right Section */}
           <div className="flex items-center gap-3">
             <button
-              onClick={openOnboarding}
+              onClick={openDemoCalendar}
               className="hidden md:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#2367EE] text-white font-bold text-base md:text-lg v4-hero-glow border-2 border-[#1D4871] focus:outline-none focus:ring-2 focus:ring-[#2367EE] focus:ring-offset-2"
             >
               <svg width="14" height="14" viewBox="0 0 512 512" fill="none" className="mr-1.5">
                 <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="currentColor" stroke="currentColor" strokeWidth="20"/>
               </svg>
-              Activate Sayso
+              Book a Demo
             </button>
 
             <button
@@ -124,10 +124,10 @@ export default function SaysoNavbarV4() {
                 </a>
               ))}
               <button
-                onClick={() => { setIsMobileMenuOpen(false); openOnboarding(); }}
+                onClick={() => { setIsMobileMenuOpen(false); openDemoCalendar(); }}
                 className="block w-full mt-3 px-4 py-3 rounded-full bg-[#2367EE] text-white font-bold text-lg text-center v2-comic-btn border-2 border-[#1D4871]"
               >
-                Activate Sayso
+                Book a Demo
               </button>
             </div>
           </div>

@@ -55,7 +55,7 @@ const metrics = [
   },
   {
     icon: <RevenueIcon />,
-    title: 'Live Coaching',
+    title: 'Real Time Assistance',
     description: 'Higher quality conversations create higher quality appointments',
     tilt: 'v2-tilt-right',
   },
@@ -160,18 +160,12 @@ export function TransformationSectionV4() {
             {/* Final CTA */}
             <div className="mt-8 md:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
               <button
-                onClick={openOnboarding}
+                onClick={openDemoCalendar}
                 className="inline-flex items-center justify-center rounded-full bg-[#FFDE59] px-7 py-3.5 text-[1.1rem] font-bold text-[#1D4871] v2-comic-btn border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDE59] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
               >
                 <svg width="18" height="18" viewBox="0 0 512 512" fill="none" className="mr-2">
                   <path d="M294.4 25.6L115.2 281.6H256L217.6 486.4L396.8 230.4H256L294.4 25.6Z" fill="#1D4871" stroke="#1D4871" strokeWidth="20"/>
                 </svg>
-                Activate Sayso
-              </button>
-              <button
-                onClick={openDemoCalendar}
-                className="inline-flex items-center justify-center rounded-full bg-transparent px-7 py-3.5 text-[1.1rem] font-bold text-white border-2 border-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D4871]"
-              >
                 Book a Demo
               </button>
             </div>

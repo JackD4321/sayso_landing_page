@@ -5,14 +5,15 @@ import { ProductShowcaseDesktop } from '../landing-v3/ProductShowcaseDesktop';
 import { useDemoCalendar } from './DemoCalendarProvider';
 
 const logos = [
-  { name: 'eXp Realty', src: '/exp realty.png', href: '/case-studies#exp-realty' },
-  { name: 'Anderson Group', src: '/anderson group.png', href: '/case-studies#anderson-group' },
+  { name: 'eXp Realty', src: '/exp realty.png' },
+  { name: 'Anderson Group', src: '/anderson group.png' },
+  { name: 'Olaf', src: '/olaf logo.png' },
 ];
 
 export function HeroWithVideoV4() {
   // Duplicate logos for seamless marquee scroll
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
-  const { openDemoCalendar, openOnboarding } = useDemoCalendar();
+  const { openDemoCalendar } = useDemoCalendar();
 
   return (
     <>
@@ -75,13 +76,7 @@ export function HeroWithVideoV4() {
                   onClick={openDemoCalendar}
                   className="inline-flex items-center justify-center rounded-full bg-[#2367EE] px-8 py-3.5 text-lg font-semibold text-white v4-hero-glow v2-comic-border-light border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
                 >
-                  Book a demo
-                </button>
-                <button
-                  onClick={openOnboarding}
-                  className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-lg font-semibold text-[#1D4871] v2-comic-border-light border-2 border-[#1D4871] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2367EE] focus-visible:ring-offset-2"
-                >
-                  Activate Sayso
+                  Book a Demo
                 </button>
               </div>
             </div>
@@ -128,10 +123,9 @@ export function HeroWithVideoV4() {
               <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
               <div className="marquee-track-hero flex items-center gap-10 md:gap-14 w-max">
                 {duplicatedLogos.map((logo, index) => (
-                  <a
+                  <div
                     key={`marquee-${index}`}
-                    href={logo.href}
-                    className="inline-flex items-center transition-all duration-200 hover:-translate-y-1 hover:opacity-80"
+                    className="inline-flex items-center"
                   >
                     <Image
                       src={logo.src}
@@ -140,7 +134,7 @@ export function HeroWithVideoV4() {
                       height={80}
                       className="h-16 md:h-20 w-auto object-contain"
                     />
-                  </a>
+                  </div>
                 ))}
               </div>
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />

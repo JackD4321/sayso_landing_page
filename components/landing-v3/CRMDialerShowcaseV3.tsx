@@ -449,7 +449,7 @@ function DialerSplitView({
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#F59E0B' }} />
-              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Buyer</span>
+              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Prospect</span>
             </div>
             <p className="text-sm font-bold text-[#1D4871]">Mrs. Smith</p>
             <p className="text-[11px] text-gray-500">(310) 488-1179</p>

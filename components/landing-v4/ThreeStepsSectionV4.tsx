@@ -215,7 +215,7 @@ export function ThreeStepsSectionV4() {
     {
       number: 1,
       title: '1. Launch Coach',
-      description: 'Turn SaySo on while you\'re calling to get live coaching and guidance during the call.',
+      description: 'Turn Sayso on while you\'re calling to get real-time context-based guidance during the call.',
       visual: <StepVisualStartSayso />,
       tilt: 'v2-tilt-left',
       soundEffect: 'CLICK!',
@@ -225,7 +225,7 @@ export function ThreeStepsSectionV4() {
     },
     {
       number: 2,
-      title: '2. Get real-time prompts',
+      title: '2. Get Real-Time Prompts',
       description: 'Sayso suggests what to ask or say next.',
       visual: <StepVisualPrompts />,
       tilt: '',
@@ -259,7 +259,7 @@ export function ThreeStepsSectionV4() {
             Sayso in 3 Easy Steps
           </h2>
           <p className="text-[1.2rem] text-[#1D4871]/70 max-w-2xl mx-auto leading-relaxed">
-            Real-time guidance that keeps outbound calls structured and moving toward a booked appointment.
+            Real-time guidance that keeps prospecting calls structured and moving toward a booked appointment.
           </p>
         </div>
 

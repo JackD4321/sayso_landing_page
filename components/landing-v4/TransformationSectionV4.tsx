@@ -115,7 +115,7 @@ export function TransformationSectionV4() {
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-center">
           {/* Left column — Hero imagery (3/5 width on desktop) */}
-          <div className="lg:col-span-2 flex flex-col items-center relative">
+          <div className="lg:col-span-2 flex flex-col items-center relative hidden md:flex">
             <HeroStarburst />
 
             {/* Large superhero character */}

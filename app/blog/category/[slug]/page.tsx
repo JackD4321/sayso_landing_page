@@ -16,9 +16,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const name = formatCategoryName(slug);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://asksayso.com';
   return {
     title: `${name} Articles | Sayso Blog`,
     description: `Read our latest articles about ${name.toLowerCase()}. Tips, strategies, and insights from the Sayso team.`,
+    alternates: {
+      canonical: `${siteUrl}/blog/category/${slug}`,
+    },
   };
 }
 

@@ -23,11 +23,15 @@ interface BlogPostPageProps {
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://asksayso.com';
   if (!post) return { title: 'Post Not Found | Sayso Blog' };
 
   return {
     title: `${post.title} | Sayso Blog`,
     description: post.description,
+    alternates: {
+      canonical: `${siteUrl}/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,

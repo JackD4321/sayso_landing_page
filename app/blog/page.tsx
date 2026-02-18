@@ -8,9 +8,14 @@ import { BlogPostCard } from '@/components/blog/BlogPostCard';
 import { BlogPagination } from '@/components/blog/BlogPagination';
 import { BlogNewsletterCTA } from '@/components/blog/BlogNewsletterCTA';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://asksayso.com';
+
 export const metadata: Metadata = {
   title: 'Blog | Sayso',
   description: 'Tips, strategies, and insights to help you win every sales moment. Cold calling scripts, AI coaching, lead conversion, and more.',
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
   openGraph: {
     title: 'The Sayso Blog',
     description: 'Tips, strategies, and insights to help you win every sales moment.',
@@ -46,7 +51,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     ? filteredPosts.filter((p) => p.slug !== featuredPost.slug)
     : filteredPosts;
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://asksayso.com';
   const jsonLd = generateBlogListJsonLd(siteUrl);
 
   return (

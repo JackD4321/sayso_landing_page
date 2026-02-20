@@ -441,6 +441,21 @@
   border-top: 4px solid #FFDE59;
 }
 
+/* === Blog Article Table === */
+.blog-table-row {
+  border-bottom: 1px solid #edf1f7;
+}
+.blog-table-row:last-child {
+  border-bottom: none;
+}
+.blog-tbody .blog-table-row:nth-child(even) {
+  background-color: #f7faff;
+}
+.blog-table-row:hover {
+  background-color: #edf3ff;
+  transition: background-color 0.15s ease;
+}
+
 /* === Onboarding Flow === */
 @keyframes onboardingSpin {
   from { transform: rotate(0deg); }

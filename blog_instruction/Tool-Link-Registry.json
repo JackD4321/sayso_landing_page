@@ -1,0 +1,169 @@
+{
+  "description": "Registry of tools and platforms mentioned in Sayso blog articles. Used for auto-linking tools on first mention.",
+  "last_updated": "2026-02-19",
+  "tools": {
+    "MaverickRE": {
+      "url": "https://maverickcre.com",
+      "category": "AI call assistant",
+      "aliases": ["Maverick", "MaverickCRE"]
+    },
+    "Shilo": {
+      "url": "https://shilo.ai",
+      "category": "AI call assistant",
+      "aliases": ["Shilo.ai"]
+    },
+    "Five9": {
+      "url": "https://five9.com",
+      "category": "Contact center software",
+      "aliases": ["Five 9"]
+    },
+    "Genesys": {
+      "url": "https://genesys.com",
+      "category": "Contact center software",
+      "aliases": []
+    },
+    "NICE": {
+      "url": "https://nice.com",
+      "category": "Contact center software",
+      "aliases": ["NICE Systems"]
+    },
+    "HubSpot": {
+      "url": "https://hubspot.com",
+      "category": "CRM",
+      "aliases": []
+    },
+    "Salesforce": {
+      "url": "https://salesforce.com",
+      "category": "CRM",
+      "aliases": []
+    },
+    "Follow Up Boss": {
+      "url": "https://followupboss.com",
+      "category": "Real estate CRM",
+      "aliases": ["FUB"]
+    },
+    "Airtable": {
+      "url": "https://airtable.com",
+      "category": "Database/CRM",
+      "aliases": []
+    },
+    "Pipedrive": {
+      "url": "https://pipedrive.com",
+      "category": "CRM",
+      "aliases": []
+    },
+    "Twilio": {
+      "url": "https://twilio.com",
+      "category": "Voice/SMS platform",
+      "aliases": []
+    },
+    "Vonage": {
+      "url": "https://vonage.com",
+      "category": "Voice/SMS platform",
+      "aliases": ["Vonage Communications"]
+    },
+    "Ringless Voicemail": {
+      "url": "https://wikipedia.org/wiki/Voicemail#Ringless_voicemail",
+      "category": "Prospecting tool",
+      "aliases": []
+    },
+    "LinkedIn": {
+      "url": "https://linkedin.com",
+      "category": "Social platform",
+      "aliases": []
+    },
+    "Facebook": {
+      "url": "https://facebook.com",
+      "category": "Social platform",
+      "aliases": []
+    },
+    "YouTube": {
+      "url": "https://youtube.com",
+      "category": "Video platform",
+      "aliases": []
+    },
+    "Google Search Console": {
+      "url": "https://search.google.com/search-console",
+      "category": "SEO tool",
+      "aliases": ["GSC", "Search Console"]
+    },
+    "Google Analytics": {
+      "url": "https://analytics.google.com",
+      "category": "Analytics",
+      "aliases": ["GA", "GA4"]
+    },
+    "SEMrush": {
+      "url": "https://semrush.com",
+      "category": "SEO tool",
+      "aliases": []
+    },
+    "Ahrefs": {
+      "url": "https://ahrefs.com",
+      "category": "SEO tool",
+      "aliases": []
+    },
+    "Ubersuggest": {
+      "url": "https://ubersuggest.com",
+      "category": "SEO tool",
+      "aliases": []
+    },
+    "Zoom": {
+      "url": "https://zoom.com",
+      "category": "Video conferencing",
+      "aliases": ["Zoom Video Communications"]
+    },
+    "Google Meet": {
+      "url": "https://meet.google.com",
+      "category": "Video conferencing",
+      "aliases": []
+    },
+    "Calendly": {
+      "url": "https://calendly.com",
+      "category": "Scheduling",
+      "aliases": []
+    },
+    "Slack": {
+      "url": "https://slack.com",
+      "category": "Team communication",
+      "aliases": []
+    },
+    "Microsoft Teams": {
+      "url": "https://teams.microsoft.com",
+      "category": "Team communication",
+      "aliases": ["Teams"]
+    },
+    "ChatGPT": {
+      "url": "https://openai.com/chatgpt",
+      "category": "AI language model",
+      "aliases": []
+    },
+    "Claude": {
+      "url": "https://claude.ai",
+      "category": "AI language model",
+      "aliases": []
+    },
+    "Stripe": {
+      "url": "https://stripe.com",
+      "category": "Payment processor",
+      "aliases": []
+    },
+    "Square": {
+      "url": "https://square.com",
+      "category": "Payment processor",
+      "aliases": []
+    }
+  },
+  "linking_rules": {
+    "link_only_first_mention": true,
+    "case_sensitive": false,
+    "skip_internal_mentions": false,
+    "markdown_format": "[Tool Name](url)",
+    "exclude_patterns": [
+      "^This article",
+      "^The article",
+      "In this ",
+      "our platform"
+    ]
+  },
+  "instructions": "When auto-linking tools in articles: (1) Search for exact tool name matches (case-insensitive) (2) Link ONLY the first occurrence in the article (3) Check aliases list for variant names (4) Skip if tool name appears in excluded patterns (5) Use markdown link format: [Tool Name](url)"
+}

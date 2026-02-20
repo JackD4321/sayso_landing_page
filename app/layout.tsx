@@ -19,6 +19,7 @@ const bangers = Bangers({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://asksayso.com'),
   title: 'Sayso',
   description: 'Transform your landing pages',
   icons: {

@@ -1,6 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkGfm from 'remark-gfm';
 
 interface BlogArticleContentProps {
   content: string;
@@ -39,15 +40,30 @@ const mdxComponents = {
   ),
   hr: () => <hr className="border-[#D7DEE1] my-8" />,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="overflow-x-auto mb-6">
-      <table className="w-full border-collapse border-2 border-[#1D4871] rounded-lg text-sm font-sans" {...props} />
+    <div
+      className="mb-8 rounded-xl overflow-hidden"
+      style={{ boxShadow: '0 4px 28px rgba(29,72,113,0.10)', border: '1px solid #e4eaf3' }}
+    >
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-sm font-sans bg-white" {...props} />
+      </div>
     </div>
   ),
+  tbody: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <tbody className="blog-tbody" {...props} />
+  ),
+  tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
+    <tr className="blog-table-row" {...props} />
+  ),
   th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <th className="bg-[#1D4871] text-white px-4 py-3 text-left font-bold" {...props} />
+    <th
+      className="text-white px-5 py-4 text-left font-semibold text-xs uppercase tracking-wide whitespace-nowrap"
+      style={{ background: 'linear-gradient(135deg, #1D4871 0%, #2367EE 100%)' }}
+      {...props}
+    />
   ),
   td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <td className="border border-[#D7DEE1] px-4 py-3 text-[#1D4871]/80" {...props} />
+    <td className="px-5 py-4 align-middle" style={{ color: 'rgba(29,72,113,0.8)' }} {...props} />
   ),
 };
 
@@ -59,6 +75,7 @@ export function BlogArticleContent({ content }: BlogArticleContentProps) {
         components={mdxComponents}
         options={{
           mdxOptions: {
+            remarkPlugins: [remarkGfm],
             rehypePlugins: [
               rehypeSlug,
               [rehypeAutolinkHeadings, { behavior: 'wrap' }],
